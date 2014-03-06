@@ -12,4 +12,4 @@
 </head>
 
 <body>
-    <div class="title"><a href="">交易地，最省心的个人交易平台</a></div>
+    <div class="headbar"><a href="#">交易地，最省心的个人交易平台</a></div>

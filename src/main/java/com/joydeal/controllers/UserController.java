@@ -44,8 +44,13 @@ public class UserController extends BaseController {
     }
 
     @Get("info")
-    public String usreInfo(Invocation inv) {
+    public String userInfoUp(Invocation inv) {
         return "user_info";
+    }
+
+    @Get("info/up")
+    public String userInfo(Invocation inv) {
+        return "user_info_up";
     }
 
     @Post("reg")
@@ -60,7 +65,6 @@ public class UserController extends BaseController {
         setAuthCookie(inv, user.result);
         return apiResult(user);
     }
-
 
     @Post("login")
     public String login(Invocation inv, @NotBlank @Param("user") String user, @NotBlank @Param("password") String password) {

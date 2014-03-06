@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="head.jsp"%>
 
-    <form class="contact_form" action="user/reg" method="post" name="contact_form">
+<div class="container">
+    <div class="title">
+        <h2>注册</h2>
+        <span class="required_notification">* 表示必填项</span>
+    </div>
+    <form class="contact_form" action="/user/reg" method="post" name=>
         <ul>
-            <li>
-                 <h2>用户注册</h2>
-                 <span class="required_notification">* 表示必填项</span>
-            </li>
             <li>
                 <label for="name">账号</label>
                 <input type="text"  name="account" id="account" placeholder="try_joydeal007" required />
@@ -16,9 +17,10 @@
                 <input type="text"  name="password" id="password" placeholder="DLdlweruo3#s" required />
             </li>
             <li>
-                <button class="submit" type="submit">走起！</button>
+                <button class="btn" type="submit">走起！</button>
+				<a  href="#" style="float: right; right:10px; margin: 16px 10px">已有账号登录</>
             </li>
         </ul>
     </form>
-
+</div>
 <%@ include file="tail.jsp"%>

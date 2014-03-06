@@ -3,18 +3,17 @@
 
 /* === Form Typography === */
 body {font: 14px/21px "Microsoft YaHei"; }
-.contact_form h2, .contact_form label {font-family: "Microsoft YaHei"}
+.container h2, .container label {font-family: "Microsoft YaHei"}
 .form_hint, .required_notification {font-size: 11px;}
 
-.contact_form {
-    position:relative;
-    left:20%;
-    margin-left: auto;
-    margin-right: auto
+.container {
+	position: relative;
+	left: 20%;
+    width:400px;
 }
 
-.title {
-    background-color:rgba(0,0,0,0.56);
+.headbar {
+     background-color:#592;
      text-align:center;
      width:100%;
      top:0;
@@ -22,7 +21,17 @@ body {font: 14px/21px "Microsoft YaHei"; }
      padding:5px 0;
 }
 
-.title a {
+.container .title {
+    width:400px;
+	position:relative;
+	border-bottom:1px solid #777;
+    list-style-type:none;
+	list-style-position:outside;
+	margin:0px;
+	padding:0px;
+}
+
+.headbar a {
     color:#FFF;
     text-decoration:none;
     font-size:16px;
@@ -31,37 +40,39 @@ body {font: 14px/21px "Microsoft YaHei"; }
 }
 
 /* === List Styles === */
-.contact_form ul {
+.container ul {
     width:400px;
     list-style-type:none;
 	list-style-position:outside;
 	margin:0px;
 	padding:0px;
 }
-.contact_form li {
+.container li {
 	padding:12px; 
 	border-bottom:1px solid #eee;
 	position:relative;
 } 
-.contact_form li:first-child, .contact_form li:last-child {
+.container li:last-child {
 	border-bottom:1px solid #777;
 }
 
 /* === Form Header === */
-.contact_form h2 {
+.container {
 	margin:0;
 	display: inline;
+	width: 100%;
+	border-bottom:1px solid #777;
 }
 
 .required_notification {
 	color:#d45252; 
-	margin:-8px 0 0 0;
+	margin:-24px 0 0 0;
 	display:inline;
 	float:right;
 }
 
 /* === Form Elements === */
-.contact_form label {
+.container label {
 	width:80px;
 	margin-top: 3px;
 	display:inline-block;
@@ -69,25 +80,25 @@ body {font: 14px/21px "Microsoft YaHei"; }
 	padding:3px;
 }
 
-.contact_form input {
+.container input {
 	height:20px; 
 	width:240px;
 	padding:5px 8px;
 	font: 10px "Microsoft YaHei";
 }
 
-.contact_form textarea {padding:8px; width:240px; font: 8px "Microsoft YaHei";
+.container textarea {padding:8px; width:240px; font: 8px "Microsoft YaHei";
 }
-.contact_form select { font: 10px "Microsoft YaHei";padding:8px; width:260px;}
+.container select { font: 10px "Microsoft YaHei";padding:8px; width:260px;}
 
-.contact_form button {
+button {
     text-align:center;
 	font: 14px "Microsoft YaHei";
 	width:100%
 }
 
 /* form element visual styles */
-.contact_form input, .contact_form textarea, .contact_form select {
+.container input, .container textarea, .container select {
     border:1px solid #aaa;
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
@@ -97,7 +108,7 @@ body {font: 14px/21px "Microsoft YaHei"; }
     -o-transition: padding .25s;
     transition: padding .25s;
 }
-.contact_form input:focus, .contact_form textarea:focus, .contact_form select:focus {
+.container input:focus, .container textarea:focus, .container select:focus {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
@@ -105,15 +116,15 @@ body {font: 14px/21px "Microsoft YaHei"; }
 }
 
 /* === HTML5 validation styles === */	
-.contact_form input:required, .contact_form textarea:required {
+.container input:required, .container textarea:required {
 	background: #fff url(images/red_asterisk.png) no-repeat 98% center;
 }
-.contact_form input:required:valid, .contact_form textarea:required:valid {
+.container input:required:valid, .container textarea:required:valid {
 	background: #fff url(images/valid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #5cd053;
 	border-color: #28921f;
 }
-.contact_form input:focus:invalid, .contact_form textarea:focus:invalid {
+.container input:focus:invalid, .container textarea:focus:invalid {
 	background: #fff url(images/invalid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #d45252;
 	border-color: #b03535
@@ -137,12 +148,12 @@ body {font: 14px/21px "Microsoft YaHei"; }
 	top:1px;
 	left:-6px;
 }
-.contact_form input:focus + .form_hint {display: inline;}
-.contact_form input:required:valid + .form_hint {background: #28921f;}
-.contact_form input:required:valid + .form_hint::before {color:#28921f;}
+.container input:focus + .form_hint {display: inline;}
+.container input:required:valid + .form_hint {background: #28921f;}
+.container input:required:valid + .form_hint::before {color:#28921f;}
 	
 /* === Button Style === */
-button.submit {
+.btn {
 	background-color: #68b12f;
 	background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
 	background: -webkit-linear-gradient(top, #68b12f, #50911e);
@@ -168,11 +179,11 @@ button.submit {
 	text-align: center;
 	text-shadow: 0 -1px 0 #396715;
 }
-button.submit:hover {
+.btn:hover {
 	opacity:.85;
 	cursor: pointer; 
 }
-button.submit:active {
+.btn:active {
 	border: 1px solid #20911e;
 	box-shadow: 0 0 10px 5px #356b0b inset; 
 	-webkit-box-shadow:0 0 10px 5px #356b0b inset ;

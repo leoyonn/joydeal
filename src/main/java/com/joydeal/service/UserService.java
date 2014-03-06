@@ -8,11 +8,11 @@ package com.joydeal.service;
 
 import com.joydeal.dao.UserDAO;
 import com.joydeal.result.OperResult;
+import com.joydeal.thrift.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.joydeal.thrift.User;
 
 /**
  *
