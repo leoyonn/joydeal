@@ -44,12 +44,17 @@ public class UserController extends BaseController {
     }
 
     @Get("info")
-    public String userInfoUp(Invocation inv) {
+    public String userInfo(Invocation inv) {
         return "user_info";
     }
 
+    @Get("{account:.+}")
+    public String otherUserInfo(Invocation inv) {
+        return "user_other";
+    }
+
     @Get("info/up")
-    public String userInfo(Invocation inv) {
+    public String userInfoUp(Invocation inv) {
         return "user_info_up";
     }
 

@@ -10,6 +10,9 @@ body {font: 14px/21px "Microsoft YaHei"; }
 	position: relative;
 	left: 20%;
     width:400px;
+	margin:0;
+	display: inline;
+	border-bottom:1px solid #777;
 }
 
 .headbar {
@@ -56,14 +59,6 @@ body {font: 14px/21px "Microsoft YaHei"; }
 	border-bottom:1px solid #777;
 }
 
-/* === Form Header === */
-.container {
-	margin:0;
-	display: inline;
-	width: 100%;
-	border-bottom:1px solid #777;
-}
-
 .required_notification {
 	color:#d45252; 
 	margin:-24px 0 0 0;
@@ -74,22 +69,26 @@ body {font: 14px/21px "Microsoft YaHei"; }
 /* === Form Elements === */
 .container label {
 	width:80px;
-	margin-top: 3px;
 	display:inline-block;
 	float:left;
-	padding:3px;
 }
 
 .container input {
 	height:20px; 
 	width:240px;
+	margin-top:-10px;
 	padding:5px 8px;
 	font: 10px "Microsoft YaHei";
 }
 
 .container textarea {padding:8px; width:240px; font: 8px "Microsoft YaHei";
 }
-.container select { font: 10px "Microsoft YaHei";padding:8px; width:260px;}
+.container select {
+	font: 10px "Microsoft YaHei";
+	padding:8px;
+	width:260px;
+	margin-top:-10px;
+}
 
 button {
     text-align:center;
@@ -97,6 +96,14 @@ button {
 	width:100%
 }
 
+/* form element visual styles */
+.container span {
+    padding-right:10px;
+}
+
+.container .desc {
+	font-size:6px;
+}
 /* form element visual styles */
 .container input, .container textarea, .container select {
     border:1px solid #aaa;
@@ -155,19 +162,13 @@ button {
 /* === Button Style === */
 .btn {
 	background-color: #68b12f;
-	background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
-	background: -webkit-linear-gradient(top, #68b12f, #50911e);
-	background: -moz-linear-gradient(top, #68b12f, #50911e);
-	background: -ms-linear-gradient(top, #68b12f, #50911e);
-	background: -o-linear-gradient(top, #68b12f, #50911e);
-	background: linear-gradient(top, #68b12f, #50911e);
 	border: 1px solid #509111;
 	border-bottom: 1px solid #5b992b;
 	border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	-ms-border-radius: 3px;
-	-o-border-radius: 3px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	-ms-border-radius: 1px;
+	-o-border-radius: 1px;
 	box-shadow: inset 0 1px 0 0 #9fd574;
 	-webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
 	-moz-box-shadow: 0 1px 0 0 #9fd574 inset;
@@ -177,7 +178,7 @@ button {
 	font-weight: bold;
 	padding: 6px 20px;
 	text-align: center;
-	text-shadow: 0 -1px 0 #396715;
+	text-shadow: 0 -2px 0 #396715;
 }
 .btn:hover {
 	opacity:.85;
@@ -190,5 +191,34 @@ button {
 	-moz-box-shadow: 0 0 10px 5px #356b0b inset;
 	-ms-box-shadow: 0 0 10px 5px #356b0b inset;
 	-o-box-shadow: 0 0 10px 5px #356b0b inset;
-	
+}
+
+.entry {
+	background-color: #F8F9F7;
+	border: 1px solid #F6F7F3;
+	border-bottom: 1px solid #F6F7F3;
+	border-radius: 1px;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	-ms-border-radius: 1px;
+	-o-border-radius: 1px;
+	box-shadow: inset 0 1px 0 0 #9fd574;
+	-webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+	-moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-o-box-shadow: 0 1px 0 0 #9fd574 inset;
+	color: #590;
+	text-align: center;
+	text-shadow: 0 -1px 0 #D8D9D7;
+}
+
+.entry:hover {
+	background-color: #CEA;
+	opacity:.85;
+	cursor: pointer;
+}
+
+.entry:active {
+	border: 1px solid #20911e;
+	background-color: #FDFEFC;
 }
