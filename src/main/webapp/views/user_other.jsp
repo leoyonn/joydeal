@@ -4,7 +4,6 @@
 <div class="container">
     <div class="title">
         <h2>人物：${name}</h2>
-        <span class="required_notification">* 表示必填项</span>
     </div>
     <h3>TA的档案</h3>
     <ul>
@@ -13,9 +12,6 @@
         </li>
         <li>
             <label for="name">头像</label><img src="/avatar/u.1.jpg" alt="介似您的靓照" style="margin-left:60px"></img>
-        </li>
-        <li>
-            <label for="name">大名</label><span>${name}</span>
         </li>
         <li>
             <label for="name">性别</label><span>${gender}</span>
@@ -82,6 +78,15 @@
         </li>
         <li class='entry'>
             <label for="name">人物2</label><span class="desc">人物2的说明</span>
+        </li>
+    <ul/>
+    <h3>留言</h3>
+    <ul>
+        <li class='entry'>
+            <label for="name">用户1</label><span class="desc">评论内容1</span>
+        </li>
+        <li class='entry'>
+            <label for="name">用户2</label><span class="desc">评论内容2</span>
         </li>
     <ul/>
 

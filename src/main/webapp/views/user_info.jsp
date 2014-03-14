@@ -4,7 +4,6 @@
 <div class="container">
     <div class="title">
         <h2>信息</h2>
-        <span class="required_notification">* 表示必填项</span>
     </div>
     <h3>我的档案</h3>
     <ul>
@@ -125,6 +124,15 @@
         </li>
         <li class='entry'>
             <label for="name">人物2</label><span class="desc">人物2的说明</span>
+        </li>
+    <ul/>
+    <h3>留言</h3>
+    <ul>
+        <li class='entry'>
+            <label for="name">用户1</label><span class="desc">评论内容1</span>
+        </li>
+        <li class='entry'>
+            <label for="name">用户2</label><span class="desc">评论内容2</span>
         </li>
     <ul/>
 

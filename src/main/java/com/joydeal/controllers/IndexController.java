@@ -1,5 +1,5 @@
 /**
- * HelloController.java
+ * IndexController.java
  * [CopyRight]
  * @author leo leoyonn@gmail.com
  * @date 2013-5-3 下午10:24:49
@@ -17,18 +17,23 @@ import org.slf4j.LoggerFactory;
  * @author leo
  */
 @Path("")
-public class HelloController extends BaseController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+public class IndexController extends BaseController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @Get("")
     public String index(Invocation inv) {
-        return successResult("welcome to joydeal home page!欢迎来到交易地首页！");
+        return index1(inv);
+    }
+
+    @Get("index")
+    public String index1(Invocation inv) {
+        return "index";
     }
 
     @LoginRequired
     @Get("shouldlogin")
     public String shouldlogin() {
-        LOGGER.info("{HelloController.index} debug in hello ");
+        LOGGER.info("{IndexController.index} debug in hello ");
         return successResult("Good! This api required login, and u got that!");
     }
 }

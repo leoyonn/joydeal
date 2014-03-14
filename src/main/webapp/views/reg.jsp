@@ -18,7 +18,7 @@
             </li>
             <li>
                 <button class="btn" type="submit">走起！</button>
-				<a  href="#" style="float: right; right:10px; margin: 16px 10px">已有账号登录</>
+				<a  href="/user/login">已有账号登录</a>
             </li>
         </ul>
     </form>

@@ -3,22 +3,18 @@
 
 <div class="container">
     <div class="title">
-        <h2>登录</h2>
+        <h2>找回密码</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="/user/login" method="post" name=>
+    <form class="contact_form" action="/user/lost" method="post" name=>
         <ul>
             <li>
                 <label for="name">账号</label>
-                <input type="text"  name="account" id="account" placeholder="try_joydeal007" required />
+                <input type="text"  name="email" id="email" placeholder="邮箱或手机号" required />
             </li>
             <li>
-                <label for="name">密码</label>
-                <input type="text"  name="password" id="password" placeholder="DLdlweruo3#s" required />
-            </li>
-            <li>
-                <button class="btn" type="submit">走起！</button>
-				<a href="/user/lost">忘密码了</a>
+                <button class="btn" type="submit">找回！</button>
+				<a href="/user/login">想起来了</a>
 				<span>|</span>
 				<a href="/user/reg">注册新号</a>
             </li>

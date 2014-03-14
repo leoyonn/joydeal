@@ -33,6 +33,11 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    @Get("")
+    public String info(Invocation inv) {
+        return "user_info";
+    }
+
     @Get("login")
     public String login(Invocation inv) {
         return "login";
@@ -41,6 +46,11 @@ public class UserController extends BaseController {
     @Get("reg")
     public String register(Invocation inv) {
         return "reg";
+    }
+
+    @Get("lost")
+    public String lost(Invocation inv) {
+        return "lost_password";
     }
 
     @Get("info")
