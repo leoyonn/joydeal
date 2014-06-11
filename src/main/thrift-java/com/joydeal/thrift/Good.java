@@ -56,18 +56,18 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
   public long id; // required
   public String name; // required
   public Category category; // required
-  public String desc; // required
+  public String desc; // optional
   public User owner; // required
-  public User buyer; // required
+  public User buyer; // optional
   public Zone zone; // required
-  public long ttl; // required
+  public long ttl; // optional
   public double price; // required
   /**
    * 
    * @see Status
    */
   public Status status; // required
-  public String icon; // required
+  public String icon; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -166,30 +166,31 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
   private static final int __TTL_ISSET_ID = 1;
   private static final int __PRICE_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
+  private _Fields optionals[] = {_Fields.DESC,_Fields.BUYER,_Fields.TTL,_Fields.ICON};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.CATEGORY, new org.apache.thrift.meta_data.FieldMetaData("category", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.CATEGORY, new org.apache.thrift.meta_data.FieldMetaData("category", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Category.class)));
-    tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.OWNER, new org.apache.thrift.meta_data.FieldMetaData("owner", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.OWNER, new org.apache.thrift.meta_data.FieldMetaData("owner", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
-    tmpMap.put(_Fields.BUYER, new org.apache.thrift.meta_data.FieldMetaData("buyer", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.BUYER, new org.apache.thrift.meta_data.FieldMetaData("buyer", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
-    tmpMap.put(_Fields.ZONE, new org.apache.thrift.meta_data.FieldMetaData("zone", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ZONE, new org.apache.thrift.meta_data.FieldMetaData("zone", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Zone.class)));
-    tmpMap.put(_Fields.TTL, new org.apache.thrift.meta_data.FieldMetaData("ttl", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.TTL, new org.apache.thrift.meta_data.FieldMetaData("ttl", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.PRICE, new org.apache.thrift.meta_data.FieldMetaData("price", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.PRICE, new org.apache.thrift.meta_data.FieldMetaData("price", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.STATUS, new org.apache.thrift.meta_data.FieldMetaData("status", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.STATUS, new org.apache.thrift.meta_data.FieldMetaData("status", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, Status.class)));
-    tmpMap.put(_Fields.ICON, new org.apache.thrift.meta_data.FieldMetaData("icon", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ICON, new org.apache.thrift.meta_data.FieldMetaData("icon", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Good.class, metaDataMap);
@@ -202,30 +203,21 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     long id,
     String name,
     Category category,
-    String desc,
     User owner,
-    User buyer,
     Zone zone,
-    long ttl,
     double price,
-    Status status,
-    String icon)
+    Status status)
   {
     this();
     this.id = id;
     setIdIsSet(true);
     this.name = name;
     this.category = category;
-    this.desc = desc;
     this.owner = owner;
-    this.buyer = buyer;
     this.zone = zone;
-    this.ttl = ttl;
-    setTtlIsSet(true);
     this.price = price;
     setPriceIsSet(true);
     this.status = status;
-    this.icon = icon;
   }
 
   /**
@@ -794,8 +786,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         return false;
     }
 
-    boolean this_present_ttl = true;
-    boolean that_present_ttl = true;
+    boolean this_present_ttl = true && this.isSetTtl();
+    boolean that_present_ttl = true && that.isSetTtl();
     if (this_present_ttl || that_present_ttl) {
       if (!(this_present_ttl && that_present_ttl))
         return false;
@@ -995,14 +987,16 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       sb.append(this.category);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("desc:");
-    if (this.desc == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.desc);
+    if (isSetDesc()) {
+      if (!first) sb.append(", ");
+      sb.append("desc:");
+      if (this.desc == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.desc);
+      }
+      first = false;
     }
-    first = false;
     if (!first) sb.append(", ");
     sb.append("owner:");
     if (this.owner == null) {
@@ -1011,14 +1005,16 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       sb.append(this.owner);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("buyer:");
-    if (this.buyer == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.buyer);
+    if (isSetBuyer()) {
+      if (!first) sb.append(", ");
+      sb.append("buyer:");
+      if (this.buyer == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.buyer);
+      }
+      first = false;
     }
-    first = false;
     if (!first) sb.append(", ");
     sb.append("zone:");
     if (this.zone == null) {
@@ -1027,10 +1023,12 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       sb.append(this.zone);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("ttl:");
-    sb.append(this.ttl);
-    first = false;
+    if (isSetTtl()) {
+      if (!first) sb.append(", ");
+      sb.append("ttl:");
+      sb.append(this.ttl);
+      first = false;
+    }
     if (!first) sb.append(", ");
     sb.append("price:");
     sb.append(this.price);
@@ -1043,20 +1041,39 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       sb.append(this.status);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("icon:");
-    if (this.icon == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.icon);
+    if (isSetIcon()) {
+      if (!first) sb.append(", ");
+      sb.append("icon:");
+      if (this.icon == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.icon);
+      }
+      first = false;
     }
-    first = false;
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    // alas, we cannot check 'id' because it's a primitive and you chose the non-beans generator.
+    if (name == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'name' was not present! Struct: " + toString());
+    }
+    if (category == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'category' was not present! Struct: " + toString());
+    }
+    if (owner == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'owner' was not present! Struct: " + toString());
+    }
+    if (zone == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'zone' was not present! Struct: " + toString());
+    }
+    // alas, we cannot check 'price' because it's a primitive and you chose the non-beans generator.
+    if (status == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'status' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
     if (category != null) {
       category.validate();
@@ -1208,6 +1225,12 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
+      if (!struct.isSetId()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' was not found in serialized data! Struct: " + toString());
+      }
+      if (!struct.isSetPrice()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'price' was not found in serialized data! Struct: " + toString());
+      }
       struct.validate();
     }
 
@@ -1229,9 +1252,11 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         oprot.writeFieldEnd();
       }
       if (struct.desc != null) {
-        oprot.writeFieldBegin(DESC_FIELD_DESC);
-        oprot.writeString(struct.desc);
-        oprot.writeFieldEnd();
+        if (struct.isSetDesc()) {
+          oprot.writeFieldBegin(DESC_FIELD_DESC);
+          oprot.writeString(struct.desc);
+          oprot.writeFieldEnd();
+        }
       }
       if (struct.owner != null) {
         oprot.writeFieldBegin(OWNER_FIELD_DESC);
@@ -1239,18 +1264,22 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         oprot.writeFieldEnd();
       }
       if (struct.buyer != null) {
-        oprot.writeFieldBegin(BUYER_FIELD_DESC);
-        struct.buyer.write(oprot);
-        oprot.writeFieldEnd();
+        if (struct.isSetBuyer()) {
+          oprot.writeFieldBegin(BUYER_FIELD_DESC);
+          struct.buyer.write(oprot);
+          oprot.writeFieldEnd();
+        }
       }
       if (struct.zone != null) {
         oprot.writeFieldBegin(ZONE_FIELD_DESC);
         struct.zone.write(oprot);
         oprot.writeFieldEnd();
       }
-      oprot.writeFieldBegin(TTL_FIELD_DESC);
-      oprot.writeI64(struct.ttl);
-      oprot.writeFieldEnd();
+      if (struct.isSetTtl()) {
+        oprot.writeFieldBegin(TTL_FIELD_DESC);
+        oprot.writeI64(struct.ttl);
+        oprot.writeFieldEnd();
+      }
       oprot.writeFieldBegin(PRICE_FIELD_DESC);
       oprot.writeDouble(struct.price);
       oprot.writeFieldEnd();
@@ -1260,9 +1289,11 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         oprot.writeFieldEnd();
       }
       if (struct.icon != null) {
-        oprot.writeFieldBegin(ICON_FIELD_DESC);
-        oprot.writeString(struct.icon);
-        oprot.writeFieldEnd();
+        if (struct.isSetIcon()) {
+          oprot.writeFieldBegin(ICON_FIELD_DESC);
+          oprot.writeString(struct.icon);
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -1281,70 +1312,35 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, Good struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      oprot.writeI64(struct.id);
+      oprot.writeString(struct.name);
+      struct.category.write(oprot);
+      struct.owner.write(oprot);
+      struct.zone.write(oprot);
+      oprot.writeDouble(struct.price);
+      oprot.writeI32(struct.status.getValue());
       BitSet optionals = new BitSet();
-      if (struct.isSetId()) {
+      if (struct.isSetDesc()) {
         optionals.set(0);
       }
-      if (struct.isSetName()) {
+      if (struct.isSetBuyer()) {
         optionals.set(1);
       }
-      if (struct.isSetCategory()) {
+      if (struct.isSetTtl()) {
         optionals.set(2);
       }
-      if (struct.isSetDesc()) {
+      if (struct.isSetIcon()) {
         optionals.set(3);
       }
-      if (struct.isSetOwner()) {
-        optionals.set(4);
-      }
-      if (struct.isSetBuyer()) {
-        optionals.set(5);
-      }
-      if (struct.isSetZone()) {
-        optionals.set(6);
-      }
-      if (struct.isSetTtl()) {
-        optionals.set(7);
-      }
-      if (struct.isSetPrice()) {
-        optionals.set(8);
-      }
-      if (struct.isSetStatus()) {
-        optionals.set(9);
-      }
-      if (struct.isSetIcon()) {
-        optionals.set(10);
-      }
-      oprot.writeBitSet(optionals, 11);
-      if (struct.isSetId()) {
-        oprot.writeI64(struct.id);
-      }
-      if (struct.isSetName()) {
-        oprot.writeString(struct.name);
-      }
-      if (struct.isSetCategory()) {
-        struct.category.write(oprot);
-      }
+      oprot.writeBitSet(optionals, 4);
       if (struct.isSetDesc()) {
         oprot.writeString(struct.desc);
-      }
-      if (struct.isSetOwner()) {
-        struct.owner.write(oprot);
       }
       if (struct.isSetBuyer()) {
         struct.buyer.write(oprot);
       }
-      if (struct.isSetZone()) {
-        struct.zone.write(oprot);
-      }
       if (struct.isSetTtl()) {
         oprot.writeI64(struct.ttl);
-      }
-      if (struct.isSetPrice()) {
-        oprot.writeDouble(struct.price);
-      }
-      if (struct.isSetStatus()) {
-        oprot.writeI32(struct.status.getValue());
       }
       if (struct.isSetIcon()) {
         oprot.writeString(struct.icon);
@@ -1354,52 +1350,38 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Good struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(11);
+      struct.id = iprot.readI64();
+      struct.setIdIsSet(true);
+      struct.name = iprot.readString();
+      struct.setNameIsSet(true);
+      struct.category = new Category();
+      struct.category.read(iprot);
+      struct.setCategoryIsSet(true);
+      struct.owner = new User();
+      struct.owner.read(iprot);
+      struct.setOwnerIsSet(true);
+      struct.zone = new Zone();
+      struct.zone.read(iprot);
+      struct.setZoneIsSet(true);
+      struct.price = iprot.readDouble();
+      struct.setPriceIsSet(true);
+      struct.status = Status.findByValue(iprot.readI32());
+      struct.setStatusIsSet(true);
+      BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
-        struct.id = iprot.readI64();
-        struct.setIdIsSet(true);
-      }
-      if (incoming.get(1)) {
-        struct.name = iprot.readString();
-        struct.setNameIsSet(true);
-      }
-      if (incoming.get(2)) {
-        struct.category = new Category();
-        struct.category.read(iprot);
-        struct.setCategoryIsSet(true);
-      }
-      if (incoming.get(3)) {
         struct.desc = iprot.readString();
         struct.setDescIsSet(true);
       }
-      if (incoming.get(4)) {
-        struct.owner = new User();
-        struct.owner.read(iprot);
-        struct.setOwnerIsSet(true);
-      }
-      if (incoming.get(5)) {
+      if (incoming.get(1)) {
         struct.buyer = new User();
         struct.buyer.read(iprot);
         struct.setBuyerIsSet(true);
       }
-      if (incoming.get(6)) {
-        struct.zone = new Zone();
-        struct.zone.read(iprot);
-        struct.setZoneIsSet(true);
-      }
-      if (incoming.get(7)) {
+      if (incoming.get(2)) {
         struct.ttl = iprot.readI64();
         struct.setTtlIsSet(true);
       }
-      if (incoming.get(8)) {
-        struct.price = iprot.readDouble();
-        struct.setPriceIsSet(true);
-      }
-      if (incoming.get(9)) {
-        struct.status = Status.findByValue(iprot.readI32());
-        struct.setStatusIsSet(true);
-      }
-      if (incoming.get(10)) {
+      if (incoming.get(3)) {
         struct.icon = iprot.readString();
         struct.setIconIsSet(true);
       }

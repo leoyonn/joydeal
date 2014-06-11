@@ -16,67 +16,68 @@ enum Status {
 }
 
 struct User {
-    1:  i64 id;
-    2:  string account;
-    3:  string name;
-    4:  Gender gender;
-    5:  string email;
-    6:  string phone;
-    7:  string avatar;
-    8:  string password;
-    9:  string passtoken;
+    1: required i64 id;
+    2: required string account;
+    3: required string name;
+    4: optional string desc;
+    5: required Gender gender;
+    6: required string email;
+    7: required string phone;
+    8: optional string avatar;
+    9: required string password;
+    10: required string passtoken;
 }
 
 struct Category {
-    1:  i16 id;
-    2:  string name;
-    3:  string desc;
-    4:  i16 parent;
-    5:  list<i16> children;
+    1: required string name;
+    2: optional string desc;
+    3: optional string parent;
+    4: optional list<string> children;
 }
 
 struct Position {
-    1:  double lon;
-    2:  double lat;
-    3:  string name;
-    4:  string address;
+    1: optional double lon;
+    2: optional double lat;
+    3: optional string name;
+    4: optional string address;
 }
 
 struct Zone {
-    1:  i64 id;
-    2:  string name;
-    3:  Category category;
-    4:  string desc;
-    5:  Position pos;
-    6:  User lord;
-    7:  User creator;
+    1: required i64 id;
+    2: required string name;
+    3: required Category category;
+    4: optional string desc;
+    5: optional Position pos;
+    6: required User lord;
+    7: required User creator;
+    8: optional string icon;
 }
 
 struct Good {
-    1:  i64 id;
-    2:  string name;
-    3:  Category category;
-    4:  string desc;
-    5:  User owner;
-    6:  User buyer;
-    7:  Zone zone;
-    8:  i64 ttl;
-    9:  double price;
-    10: Status status;
-    11: string icon;
+    1: required i64 id;
+    2: required string name;
+    3: required Category category;
+    4: optional string desc;
+    5: required User owner;
+    6: optional User buyer;
+    7: required Zone zone;
+    8: optional i64 ttl;
+    9: required double price;
+    10: required Status status;
+    11: optional string icon;
 }
 
 struct Need {
-    1:  i64 id;
-    2:  string name;
-    3:  Category category;
-    4:  string desc;
-    5:  User owner;
-    6:  User seller;
-    7:  Zone zone;
-    8:  i64 ttl;
-    9:  double price;
-    10: Status status;
-    11: string icon;
+    1: required i64 id;
+    2: required string name;
+    3: required Category category;
+    4: optional string desc;
+    5: required User owner;
+    6: optional User seller;
+    7: required Zone zone;
+    8: required i64 ttl;
+    9: required double price;
+    10: required Status status;
+    11: optional string icon;
 }
 

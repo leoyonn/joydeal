@@ -46,10 +46,10 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
     schemes.put(TupleScheme.class, new PositionTupleSchemeFactory());
   }
 
-  public double lon; // required
-  public double lat; // required
-  public String name; // required
-  public String address; // required
+  public double lon; // optional
+  public double lat; // optional
+  public String name; // optional
+  public String address; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -122,37 +122,23 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
   private static final int __LON_ISSET_ID = 0;
   private static final int __LAT_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
+  private _Fields optionals[] = {_Fields.LON,_Fields.LAT,_Fields.NAME,_Fields.ADDRESS};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.LON, new org.apache.thrift.meta_data.FieldMetaData("lon", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.LON, new org.apache.thrift.meta_data.FieldMetaData("lon", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.LAT, new org.apache.thrift.meta_data.FieldMetaData("lat", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.LAT, new org.apache.thrift.meta_data.FieldMetaData("lat", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.DOUBLE)));
-    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.ADDRESS, new org.apache.thrift.meta_data.FieldMetaData("address", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ADDRESS, new org.apache.thrift.meta_data.FieldMetaData("address", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Position.class, metaDataMap);
   }
 
   public Position() {
-  }
-
-  public Position(
-    double lon,
-    double lat,
-    String name,
-    String address)
-  {
-    this();
-    this.lon = lon;
-    setLonIsSet(true);
-    this.lat = lat;
-    setLatIsSet(true);
-    this.name = name;
-    this.address = address;
   }
 
   /**
@@ -365,8 +351,8 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
     if (that == null)
       return false;
 
-    boolean this_present_lon = true;
-    boolean that_present_lon = true;
+    boolean this_present_lon = true && this.isSetLon();
+    boolean that_present_lon = true && that.isSetLon();
     if (this_present_lon || that_present_lon) {
       if (!(this_present_lon && that_present_lon))
         return false;
@@ -374,8 +360,8 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
         return false;
     }
 
-    boolean this_present_lat = true;
-    boolean that_present_lat = true;
+    boolean this_present_lat = true && this.isSetLat();
+    boolean that_present_lat = true && that.isSetLat();
     if (this_present_lat || that_present_lat) {
       if (!(this_present_lat && that_present_lat))
         return false;
@@ -477,29 +463,37 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
     StringBuilder sb = new StringBuilder("Position(");
     boolean first = true;
 
-    sb.append("lon:");
-    sb.append(this.lon);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("lat:");
-    sb.append(this.lat);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("name:");
-    if (this.name == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.name);
+    if (isSetLon()) {
+      sb.append("lon:");
+      sb.append(this.lon);
+      first = false;
     }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("address:");
-    if (this.address == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.address);
+    if (isSetLat()) {
+      if (!first) sb.append(", ");
+      sb.append("lat:");
+      sb.append(this.lat);
+      first = false;
     }
-    first = false;
+    if (isSetName()) {
+      if (!first) sb.append(", ");
+      sb.append("name:");
+      if (this.name == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.name);
+      }
+      first = false;
+    }
+    if (isSetAddress()) {
+      if (!first) sb.append(", ");
+      sb.append("address:");
+      if (this.address == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.address);
+      }
+      first = false;
+    }
     sb.append(")");
     return sb.toString();
   }
@@ -592,21 +586,29 @@ public class Position implements org.apache.thrift.TBase<Position, Position._Fie
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(LON_FIELD_DESC);
-      oprot.writeDouble(struct.lon);
-      oprot.writeFieldEnd();
-      oprot.writeFieldBegin(LAT_FIELD_DESC);
-      oprot.writeDouble(struct.lat);
-      oprot.writeFieldEnd();
-      if (struct.name != null) {
-        oprot.writeFieldBegin(NAME_FIELD_DESC);
-        oprot.writeString(struct.name);
+      if (struct.isSetLon()) {
+        oprot.writeFieldBegin(LON_FIELD_DESC);
+        oprot.writeDouble(struct.lon);
         oprot.writeFieldEnd();
       }
-      if (struct.address != null) {
-        oprot.writeFieldBegin(ADDRESS_FIELD_DESC);
-        oprot.writeString(struct.address);
+      if (struct.isSetLat()) {
+        oprot.writeFieldBegin(LAT_FIELD_DESC);
+        oprot.writeDouble(struct.lat);
         oprot.writeFieldEnd();
+      }
+      if (struct.name != null) {
+        if (struct.isSetName()) {
+          oprot.writeFieldBegin(NAME_FIELD_DESC);
+          oprot.writeString(struct.name);
+          oprot.writeFieldEnd();
+        }
+      }
+      if (struct.address != null) {
+        if (struct.isSetAddress()) {
+          oprot.writeFieldBegin(ADDRESS_FIELD_DESC);
+          oprot.writeString(struct.address);
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();

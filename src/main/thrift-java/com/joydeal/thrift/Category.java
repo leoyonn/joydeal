@@ -35,11 +35,10 @@ import org.slf4j.LoggerFactory;
 public class Category implements org.apache.thrift.TBase<Category, Category._Fields>, java.io.Serializable, Cloneable, Comparable<Category> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Category");
 
-  private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.I16, (short)1);
-  private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField DESC_FIELD_DESC = new org.apache.thrift.protocol.TField("desc", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField PARENT_FIELD_DESC = new org.apache.thrift.protocol.TField("parent", org.apache.thrift.protocol.TType.I16, (short)4);
-  private static final org.apache.thrift.protocol.TField CHILDREN_FIELD_DESC = new org.apache.thrift.protocol.TField("children", org.apache.thrift.protocol.TType.LIST, (short)5);
+  private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField DESC_FIELD_DESC = new org.apache.thrift.protocol.TField("desc", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField PARENT_FIELD_DESC = new org.apache.thrift.protocol.TField("parent", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField CHILDREN_FIELD_DESC = new org.apache.thrift.protocol.TField("children", org.apache.thrift.protocol.TType.LIST, (short)4);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -47,19 +46,17 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     schemes.put(TupleScheme.class, new CategoryTupleSchemeFactory());
   }
 
-  public short id; // required
   public String name; // required
-  public String desc; // required
-  public short parent; // required
-  public List<Short> children; // required
+  public String desc; // optional
+  public String parent; // optional
+  public List<String> children; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    ID((short)1, "id"),
-    NAME((short)2, "name"),
-    DESC((short)3, "desc"),
-    PARENT((short)4, "parent"),
-    CHILDREN((short)5, "children");
+    NAME((short)1, "name"),
+    DESC((short)2, "desc"),
+    PARENT((short)3, "parent"),
+    CHILDREN((short)4, "children");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -74,15 +71,13 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // ID
-          return ID;
-        case 2: // NAME
+        case 1: // NAME
           return NAME;
-        case 3: // DESC
+        case 2: // DESC
           return DESC;
-        case 4: // PARENT
+        case 3: // PARENT
           return PARENT;
-        case 5: // CHILDREN
+        case 4: // CHILDREN
           return CHILDREN;
         default:
           return null;
@@ -124,23 +119,19 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
   }
 
   // isset id assignments
-  private static final int __ID_ISSET_ID = 0;
-  private static final int __PARENT_ISSET_ID = 1;
-  private byte __isset_bitfield = 0;
+  private _Fields optionals[] = {_Fields.DESC,_Fields.PARENT,_Fields.CHILDREN};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16)));
-    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.PARENT, new org.apache.thrift.meta_data.FieldMetaData("parent", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16)));
-    tmpMap.put(_Fields.CHILDREN, new org.apache.thrift.meta_data.FieldMetaData("children", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.PARENT, new org.apache.thrift.meta_data.FieldMetaData("parent", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.CHILDREN, new org.apache.thrift.meta_data.FieldMetaData("children", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16))));
+            new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Category.class, metaDataMap);
   }
@@ -149,37 +140,27 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
   }
 
   public Category(
-    short id,
-    String name,
-    String desc,
-    short parent,
-    List<Short> children)
+    String name)
   {
     this();
-    this.id = id;
-    setIdIsSet(true);
     this.name = name;
-    this.desc = desc;
-    this.parent = parent;
-    setParentIsSet(true);
-    this.children = children;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
   public Category(Category other) {
-    __isset_bitfield = other.__isset_bitfield;
-    this.id = other.id;
     if (other.isSetName()) {
       this.name = other.name;
     }
     if (other.isSetDesc()) {
       this.desc = other.desc;
     }
-    this.parent = other.parent;
+    if (other.isSetParent()) {
+      this.parent = other.parent;
+    }
     if (other.isSetChildren()) {
-      List<Short> __this__children = new ArrayList<Short>(other.children);
+      List<String> __this__children = new ArrayList<String>(other.children);
       this.children = __this__children;
     }
   }
@@ -190,36 +171,10 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
 
   @Override
   public void clear() {
-    setIdIsSet(false);
-    this.id = 0;
     this.name = null;
     this.desc = null;
-    setParentIsSet(false);
-    this.parent = 0;
+    this.parent = null;
     this.children = null;
-  }
-
-  public short getId() {
-    return this.id;
-  }
-
-  public Category setId(short id) {
-    this.id = id;
-    setIdIsSet(true);
-    return this;
-  }
-
-  public void unsetId() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __ID_ISSET_ID);
-  }
-
-  /** Returns true if field id is set (has been assigned a value) and false otherwise */
-  public boolean isSetId() {
-    return EncodingUtils.testBit(__isset_bitfield, __ID_ISSET_ID);
-  }
-
-  public void setIdIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ID_ISSET_ID, value);
   }
 
   public String getName() {
@@ -270,49 +225,50 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     }
   }
 
-  public short getParent() {
+  public String getParent() {
     return this.parent;
   }
 
-  public Category setParent(short parent) {
+  public Category setParent(String parent) {
     this.parent = parent;
-    setParentIsSet(true);
     return this;
   }
 
   public void unsetParent() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __PARENT_ISSET_ID);
+    this.parent = null;
   }
 
   /** Returns true if field parent is set (has been assigned a value) and false otherwise */
   public boolean isSetParent() {
-    return EncodingUtils.testBit(__isset_bitfield, __PARENT_ISSET_ID);
+    return this.parent != null;
   }
 
   public void setParentIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __PARENT_ISSET_ID, value);
+    if (!value) {
+      this.parent = null;
+    }
   }
 
   public int getChildrenSize() {
     return (this.children == null) ? 0 : this.children.size();
   }
 
-  public java.util.Iterator<Short> getChildrenIterator() {
+  public java.util.Iterator<String> getChildrenIterator() {
     return (this.children == null) ? null : this.children.iterator();
   }
 
-  public void addToChildren(short elem) {
+  public void addToChildren(String elem) {
     if (this.children == null) {
-      this.children = new ArrayList<Short>();
+      this.children = new ArrayList<String>();
     }
     this.children.add(elem);
   }
 
-  public List<Short> getChildren() {
+  public List<String> getChildren() {
     return this.children;
   }
 
-  public Category setChildren(List<Short> children) {
+  public Category setChildren(List<String> children) {
     this.children = children;
     return this;
   }
@@ -334,14 +290,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case ID:
-      if (value == null) {
-        unsetId();
-      } else {
-        setId((Short)value);
-      }
-      break;
-
     case NAME:
       if (value == null) {
         unsetName();
@@ -362,7 +310,7 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
       if (value == null) {
         unsetParent();
       } else {
-        setParent((Short)value);
+        setParent((String)value);
       }
       break;
 
@@ -370,7 +318,7 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
       if (value == null) {
         unsetChildren();
       } else {
-        setChildren((List<Short>)value);
+        setChildren((List<String>)value);
       }
       break;
 
@@ -379,9 +327,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case ID:
-      return Short.valueOf(getId());
-
     case NAME:
       return getName();
 
@@ -389,7 +334,7 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
       return getDesc();
 
     case PARENT:
-      return Short.valueOf(getParent());
+      return getParent();
 
     case CHILDREN:
       return getChildren();
@@ -405,8 +350,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     }
 
     switch (field) {
-    case ID:
-      return isSetId();
     case NAME:
       return isSetName();
     case DESC:
@@ -432,15 +375,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     if (that == null)
       return false;
 
-    boolean this_present_id = true;
-    boolean that_present_id = true;
-    if (this_present_id || that_present_id) {
-      if (!(this_present_id && that_present_id))
-        return false;
-      if (this.id != that.id)
-        return false;
-    }
-
     boolean this_present_name = true && this.isSetName();
     boolean that_present_name = true && that.isSetName();
     if (this_present_name || that_present_name) {
@@ -459,12 +393,12 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
         return false;
     }
 
-    boolean this_present_parent = true;
-    boolean that_present_parent = true;
+    boolean this_present_parent = true && this.isSetParent();
+    boolean that_present_parent = true && that.isSetParent();
     if (this_present_parent || that_present_parent) {
       if (!(this_present_parent && that_present_parent))
         return false;
-      if (this.parent != that.parent)
+      if (!this.parent.equals(that.parent))
         return false;
     }
 
@@ -493,16 +427,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
 
     int lastComparison = 0;
 
-    lastComparison = Boolean.valueOf(isSetId()).compareTo(other.isSetId());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetId()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, other.id);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = Boolean.valueOf(isSetName()).compareTo(other.isSetName());
     if (lastComparison != 0) {
       return lastComparison;
@@ -563,10 +487,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     StringBuilder sb = new StringBuilder("Category(");
     boolean first = true;
 
-    sb.append("id:");
-    sb.append(this.id);
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("name:");
     if (this.name == null) {
       sb.append("null");
@@ -574,32 +494,45 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
       sb.append(this.name);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("desc:");
-    if (this.desc == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.desc);
+    if (isSetDesc()) {
+      if (!first) sb.append(", ");
+      sb.append("desc:");
+      if (this.desc == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.desc);
+      }
+      first = false;
     }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("parent:");
-    sb.append(this.parent);
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("children:");
-    if (this.children == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.children);
+    if (isSetParent()) {
+      if (!first) sb.append(", ");
+      sb.append("parent:");
+      if (this.parent == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.parent);
+      }
+      first = false;
     }
-    first = false;
+    if (isSetChildren()) {
+      if (!first) sb.append(", ");
+      sb.append("children:");
+      if (this.children == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.children);
+      }
+      first = false;
+    }
     sb.append(")");
     return sb.toString();
   }
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    if (name == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'name' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
   }
 
@@ -613,8 +546,6 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
 
   private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
     try {
-      // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
-      __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
     } catch (org.apache.thrift.TException te) {
       throw new java.io.IOException(te);
@@ -639,15 +570,7 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
           break;
         }
         switch (schemeField.id) {
-          case 1: // ID
-            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
-              struct.id = iprot.readI16();
-              struct.setIdIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 2: // NAME
+          case 1: // NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.name = iprot.readString();
               struct.setNameIsSet(true);
@@ -655,7 +578,7 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // DESC
+          case 2: // DESC
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.desc = iprot.readString();
               struct.setDescIsSet(true);
@@ -663,23 +586,23 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // PARENT
-            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
-              struct.parent = iprot.readI16();
+          case 3: // PARENT
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.parent = iprot.readString();
               struct.setParentIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // CHILDREN
+          case 4: // CHILDREN
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
                 org.apache.thrift.protocol.TList _list0 = iprot.readListBegin();
-                struct.children = new ArrayList<Short>(_list0.size);
+                struct.children = new ArrayList<String>(_list0.size);
                 for (int _i1 = 0; _i1 < _list0.size; ++_i1)
                 {
-                  short _elem2;
-                  _elem2 = iprot.readI16();
+                  String _elem2;
+                  _elem2 = iprot.readString();
                   struct.children.add(_elem2);
                 }
                 iprot.readListEnd();
@@ -704,33 +627,38 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(ID_FIELD_DESC);
-      oprot.writeI16(struct.id);
-      oprot.writeFieldEnd();
       if (struct.name != null) {
         oprot.writeFieldBegin(NAME_FIELD_DESC);
         oprot.writeString(struct.name);
         oprot.writeFieldEnd();
       }
       if (struct.desc != null) {
-        oprot.writeFieldBegin(DESC_FIELD_DESC);
-        oprot.writeString(struct.desc);
-        oprot.writeFieldEnd();
-      }
-      oprot.writeFieldBegin(PARENT_FIELD_DESC);
-      oprot.writeI16(struct.parent);
-      oprot.writeFieldEnd();
-      if (struct.children != null) {
-        oprot.writeFieldBegin(CHILDREN_FIELD_DESC);
-        {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I16, struct.children.size()));
-          for (short _iter3 : struct.children)
-          {
-            oprot.writeI16(_iter3);
-          }
-          oprot.writeListEnd();
+        if (struct.isSetDesc()) {
+          oprot.writeFieldBegin(DESC_FIELD_DESC);
+          oprot.writeString(struct.desc);
+          oprot.writeFieldEnd();
         }
-        oprot.writeFieldEnd();
+      }
+      if (struct.parent != null) {
+        if (struct.isSetParent()) {
+          oprot.writeFieldBegin(PARENT_FIELD_DESC);
+          oprot.writeString(struct.parent);
+          oprot.writeFieldEnd();
+        }
+      }
+      if (struct.children != null) {
+        if (struct.isSetChildren()) {
+          oprot.writeFieldBegin(CHILDREN_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.children.size()));
+            for (String _iter3 : struct.children)
+            {
+              oprot.writeString(_iter3);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
       }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -749,41 +677,30 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, Category struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      oprot.writeString(struct.name);
       BitSet optionals = new BitSet();
-      if (struct.isSetId()) {
+      if (struct.isSetDesc()) {
         optionals.set(0);
       }
-      if (struct.isSetName()) {
+      if (struct.isSetParent()) {
         optionals.set(1);
       }
-      if (struct.isSetDesc()) {
+      if (struct.isSetChildren()) {
         optionals.set(2);
       }
-      if (struct.isSetParent()) {
-        optionals.set(3);
-      }
-      if (struct.isSetChildren()) {
-        optionals.set(4);
-      }
-      oprot.writeBitSet(optionals, 5);
-      if (struct.isSetId()) {
-        oprot.writeI16(struct.id);
-      }
-      if (struct.isSetName()) {
-        oprot.writeString(struct.name);
-      }
+      oprot.writeBitSet(optionals, 3);
       if (struct.isSetDesc()) {
         oprot.writeString(struct.desc);
       }
       if (struct.isSetParent()) {
-        oprot.writeI16(struct.parent);
+        oprot.writeString(struct.parent);
       }
       if (struct.isSetChildren()) {
         {
           oprot.writeI32(struct.children.size());
-          for (short _iter4 : struct.children)
+          for (String _iter4 : struct.children)
           {
-            oprot.writeI16(_iter4);
+            oprot.writeString(_iter4);
           }
         }
       }
@@ -792,31 +709,25 @@ public class Category implements org.apache.thrift.TBase<Category, Category._Fie
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Category struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(5);
+      struct.name = iprot.readString();
+      struct.setNameIsSet(true);
+      BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
-        struct.id = iprot.readI16();
-        struct.setIdIsSet(true);
-      }
-      if (incoming.get(1)) {
-        struct.name = iprot.readString();
-        struct.setNameIsSet(true);
-      }
-      if (incoming.get(2)) {
         struct.desc = iprot.readString();
         struct.setDescIsSet(true);
       }
-      if (incoming.get(3)) {
-        struct.parent = iprot.readI16();
+      if (incoming.get(1)) {
+        struct.parent = iprot.readString();
         struct.setParentIsSet(true);
       }
-      if (incoming.get(4)) {
+      if (incoming.get(2)) {
         {
-          org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.I16, iprot.readI32());
-          struct.children = new ArrayList<Short>(_list5.size);
+          org.apache.thrift.protocol.TList _list5 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
+          struct.children = new ArrayList<String>(_list5.size);
           for (int _i6 = 0; _i6 < _list5.size; ++_i6)
           {
-            short _elem7;
-            _elem7 = iprot.readI16();
+            String _elem7;
+            _elem7 = iprot.readString();
             struct.children.add(_elem7);
           }
         }

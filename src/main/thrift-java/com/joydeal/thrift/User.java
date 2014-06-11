@@ -38,12 +38,13 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.I64, (short)1);
   private static final org.apache.thrift.protocol.TField ACCOUNT_FIELD_DESC = new org.apache.thrift.protocol.TField("account", org.apache.thrift.protocol.TType.STRING, (short)2);
   private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField GENDER_FIELD_DESC = new org.apache.thrift.protocol.TField("gender", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)5);
-  private static final org.apache.thrift.protocol.TField PHONE_FIELD_DESC = new org.apache.thrift.protocol.TField("phone", org.apache.thrift.protocol.TType.STRING, (short)6);
-  private static final org.apache.thrift.protocol.TField AVATAR_FIELD_DESC = new org.apache.thrift.protocol.TField("avatar", org.apache.thrift.protocol.TType.STRING, (short)7);
-  private static final org.apache.thrift.protocol.TField PASSWORD_FIELD_DESC = new org.apache.thrift.protocol.TField("password", org.apache.thrift.protocol.TType.STRING, (short)8);
-  private static final org.apache.thrift.protocol.TField PASSTOKEN_FIELD_DESC = new org.apache.thrift.protocol.TField("passtoken", org.apache.thrift.protocol.TType.STRING, (short)9);
+  private static final org.apache.thrift.protocol.TField DESC_FIELD_DESC = new org.apache.thrift.protocol.TField("desc", org.apache.thrift.protocol.TType.STRING, (short)4);
+  private static final org.apache.thrift.protocol.TField GENDER_FIELD_DESC = new org.apache.thrift.protocol.TField("gender", org.apache.thrift.protocol.TType.I32, (short)5);
+  private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)6);
+  private static final org.apache.thrift.protocol.TField PHONE_FIELD_DESC = new org.apache.thrift.protocol.TField("phone", org.apache.thrift.protocol.TType.STRING, (short)7);
+  private static final org.apache.thrift.protocol.TField AVATAR_FIELD_DESC = new org.apache.thrift.protocol.TField("avatar", org.apache.thrift.protocol.TType.STRING, (short)8);
+  private static final org.apache.thrift.protocol.TField PASSWORD_FIELD_DESC = new org.apache.thrift.protocol.TField("password", org.apache.thrift.protocol.TType.STRING, (short)9);
+  private static final org.apache.thrift.protocol.TField PASSTOKEN_FIELD_DESC = new org.apache.thrift.protocol.TField("passtoken", org.apache.thrift.protocol.TType.STRING, (short)10);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -54,6 +55,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   public long id; // required
   public String account; // required
   public String name; // required
+  public String desc; // optional
   /**
    * 
    * @see Gender
@@ -61,7 +63,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   public Gender gender; // required
   public String email; // required
   public String phone; // required
-  public String avatar; // required
+  public String avatar; // optional
   public String password; // required
   public String passtoken; // required
 
@@ -70,16 +72,17 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     ID((short)1, "id"),
     ACCOUNT((short)2, "account"),
     NAME((short)3, "name"),
+    DESC((short)4, "desc"),
     /**
      * 
      * @see Gender
      */
-    GENDER((short)4, "gender"),
-    EMAIL((short)5, "email"),
-    PHONE((short)6, "phone"),
-    AVATAR((short)7, "avatar"),
-    PASSWORD((short)8, "password"),
-    PASSTOKEN((short)9, "passtoken");
+    GENDER((short)5, "gender"),
+    EMAIL((short)6, "email"),
+    PHONE((short)7, "phone"),
+    AVATAR((short)8, "avatar"),
+    PASSWORD((short)9, "password"),
+    PASSTOKEN((short)10, "passtoken");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -100,17 +103,19 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
           return ACCOUNT;
         case 3: // NAME
           return NAME;
-        case 4: // GENDER
+        case 4: // DESC
+          return DESC;
+        case 5: // GENDER
           return GENDER;
-        case 5: // EMAIL
+        case 6: // EMAIL
           return EMAIL;
-        case 6: // PHONE
+        case 7: // PHONE
           return PHONE;
-        case 7: // AVATAR
+        case 8: // AVATAR
           return AVATAR;
-        case 8: // PASSWORD
+        case 9: // PASSWORD
           return PASSWORD;
-        case 9: // PASSTOKEN
+        case 10: // PASSTOKEN
           return PASSTOKEN;
         default:
           return null;
@@ -154,26 +159,29 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   // isset id assignments
   private static final int __ID_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
+  private _Fields optionals[] = {_Fields.DESC,_Fields.AVATAR};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.ACCOUNT, new org.apache.thrift.meta_data.FieldMetaData("account", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.ACCOUNT, new org.apache.thrift.meta_data.FieldMetaData("account", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.NAME, new org.apache.thrift.meta_data.FieldMetaData("name", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.GENDER, new org.apache.thrift.meta_data.FieldMetaData("gender", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.GENDER, new org.apache.thrift.meta_data.FieldMetaData("gender", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, Gender.class)));
-    tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.PHONE, new org.apache.thrift.meta_data.FieldMetaData("phone", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.PHONE, new org.apache.thrift.meta_data.FieldMetaData("phone", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.AVATAR, new org.apache.thrift.meta_data.FieldMetaData("avatar", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.AVATAR, new org.apache.thrift.meta_data.FieldMetaData("avatar", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.PASSWORD, new org.apache.thrift.meta_data.FieldMetaData("password", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.PASSWORD, new org.apache.thrift.meta_data.FieldMetaData("password", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.PASSTOKEN, new org.apache.thrift.meta_data.FieldMetaData("passtoken", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.PASSTOKEN, new org.apache.thrift.meta_data.FieldMetaData("passtoken", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(User.class, metaDataMap);
@@ -189,7 +197,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     Gender gender,
     String email,
     String phone,
-    String avatar,
     String password,
     String passtoken)
   {
@@ -201,7 +208,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     this.gender = gender;
     this.email = email;
     this.phone = phone;
-    this.avatar = avatar;
     this.password = password;
     this.passtoken = passtoken;
   }
@@ -217,6 +223,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
     if (other.isSetName()) {
       this.name = other.name;
+    }
+    if (other.isSetDesc()) {
+      this.desc = other.desc;
     }
     if (other.isSetGender()) {
       this.gender = other.gender;
@@ -248,6 +257,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     this.id = 0;
     this.account = null;
     this.name = null;
+    this.desc = null;
     this.gender = null;
     this.email = null;
     this.phone = null;
@@ -324,6 +334,30 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   public void setNameIsSet(boolean value) {
     if (!value) {
       this.name = null;
+    }
+  }
+
+  public String getDesc() {
+    return this.desc;
+  }
+
+  public User setDesc(String desc) {
+    this.desc = desc;
+    return this;
+  }
+
+  public void unsetDesc() {
+    this.desc = null;
+  }
+
+  /** Returns true if field desc is set (has been assigned a value) and false otherwise */
+  public boolean isSetDesc() {
+    return this.desc != null;
+  }
+
+  public void setDescIsSet(boolean value) {
+    if (!value) {
+      this.desc = null;
     }
   }
 
@@ -505,6 +539,14 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       }
       break;
 
+    case DESC:
+      if (value == null) {
+        unsetDesc();
+      } else {
+        setDesc((String)value);
+      }
+      break;
+
     case GENDER:
       if (value == null) {
         unsetGender();
@@ -567,6 +609,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     case NAME:
       return getName();
 
+    case DESC:
+      return getDesc();
+
     case GENDER:
       return getGender();
 
@@ -602,6 +647,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       return isSetAccount();
     case NAME:
       return isSetName();
+    case DESC:
+      return isSetDesc();
     case GENDER:
       return isSetGender();
     case EMAIL:
@@ -655,6 +702,15 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       if (!(this_present_name && that_present_name))
         return false;
       if (!this.name.equals(that.name))
+        return false;
+    }
+
+    boolean this_present_desc = true && this.isSetDesc();
+    boolean that_present_desc = true && that.isSetDesc();
+    if (this_present_desc || that_present_desc) {
+      if (!(this_present_desc && that_present_desc))
+        return false;
+      if (!this.desc.equals(that.desc))
         return false;
     }
 
@@ -758,6 +814,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetDesc()).compareTo(other.isSetDesc());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetDesc()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.desc, other.desc);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetGender()).compareTo(other.isSetGender());
     if (lastComparison != 0) {
       return lastComparison;
@@ -857,6 +923,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       sb.append(this.name);
     }
     first = false;
+    if (isSetDesc()) {
+      if (!first) sb.append(", ");
+      sb.append("desc:");
+      if (this.desc == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.desc);
+      }
+      first = false;
+    }
     if (!first) sb.append(", ");
     sb.append("gender:");
     if (this.gender == null) {
@@ -881,14 +957,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       sb.append(this.phone);
     }
     first = false;
-    if (!first) sb.append(", ");
-    sb.append("avatar:");
-    if (this.avatar == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.avatar);
+    if (isSetAvatar()) {
+      if (!first) sb.append(", ");
+      sb.append("avatar:");
+      if (this.avatar == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.avatar);
+      }
+      first = false;
     }
-    first = false;
     if (!first) sb.append(", ");
     sb.append("password:");
     if (this.password == null) {
@@ -911,6 +989,28 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    // alas, we cannot check 'id' because it's a primitive and you chose the non-beans generator.
+    if (account == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'account' was not present! Struct: " + toString());
+    }
+    if (name == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'name' was not present! Struct: " + toString());
+    }
+    if (gender == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'gender' was not present! Struct: " + toString());
+    }
+    if (email == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'email' was not present! Struct: " + toString());
+    }
+    if (phone == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'phone' was not present! Struct: " + toString());
+    }
+    if (password == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'password' was not present! Struct: " + toString());
+    }
+    if (passtoken == null) {
+      throw new org.apache.thrift.protocol.TProtocolException("Required field 'passtoken' was not present! Struct: " + toString());
+    }
     // check for sub-struct validity
   }
 
@@ -974,7 +1074,15 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // GENDER
+          case 4: // DESC
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.desc = iprot.readString();
+              struct.setDescIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 5: // GENDER
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.gender = Gender.findByValue(iprot.readI32());
               struct.setGenderIsSet(true);
@@ -982,7 +1090,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // EMAIL
+          case 6: // EMAIL
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.email = iprot.readString();
               struct.setEmailIsSet(true);
@@ -990,7 +1098,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // PHONE
+          case 7: // PHONE
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.phone = iprot.readString();
               struct.setPhoneIsSet(true);
@@ -998,7 +1106,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // AVATAR
+          case 8: // AVATAR
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.avatar = iprot.readString();
               struct.setAvatarIsSet(true);
@@ -1006,7 +1114,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 8: // PASSWORD
+          case 9: // PASSWORD
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.password = iprot.readString();
               struct.setPasswordIsSet(true);
@@ -1014,7 +1122,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 9: // PASSTOKEN
+          case 10: // PASSTOKEN
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.passtoken = iprot.readString();
               struct.setPasstokenIsSet(true);
@@ -1030,6 +1138,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
+      if (!struct.isSetId()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' was not found in serialized data! Struct: " + toString());
+      }
       struct.validate();
     }
 
@@ -1050,6 +1161,13 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         oprot.writeString(struct.name);
         oprot.writeFieldEnd();
       }
+      if (struct.desc != null) {
+        if (struct.isSetDesc()) {
+          oprot.writeFieldBegin(DESC_FIELD_DESC);
+          oprot.writeString(struct.desc);
+          oprot.writeFieldEnd();
+        }
+      }
       if (struct.gender != null) {
         oprot.writeFieldBegin(GENDER_FIELD_DESC);
         oprot.writeI32(struct.gender.getValue());
@@ -1066,9 +1184,11 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         oprot.writeFieldEnd();
       }
       if (struct.avatar != null) {
-        oprot.writeFieldBegin(AVATAR_FIELD_DESC);
-        oprot.writeString(struct.avatar);
-        oprot.writeFieldEnd();
+        if (struct.isSetAvatar()) {
+          oprot.writeFieldBegin(AVATAR_FIELD_DESC);
+          oprot.writeString(struct.avatar);
+          oprot.writeFieldEnd();
+        }
       }
       if (struct.password != null) {
         oprot.writeFieldBegin(PASSWORD_FIELD_DESC);
@@ -1097,103 +1217,57 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     @Override
     public void write(org.apache.thrift.protocol.TProtocol prot, User struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
+      oprot.writeI64(struct.id);
+      oprot.writeString(struct.account);
+      oprot.writeString(struct.name);
+      oprot.writeI32(struct.gender.getValue());
+      oprot.writeString(struct.email);
+      oprot.writeString(struct.phone);
+      oprot.writeString(struct.password);
+      oprot.writeString(struct.passtoken);
       BitSet optionals = new BitSet();
-      if (struct.isSetId()) {
+      if (struct.isSetDesc()) {
         optionals.set(0);
       }
-      if (struct.isSetAccount()) {
+      if (struct.isSetAvatar()) {
         optionals.set(1);
       }
-      if (struct.isSetName()) {
-        optionals.set(2);
-      }
-      if (struct.isSetGender()) {
-        optionals.set(3);
-      }
-      if (struct.isSetEmail()) {
-        optionals.set(4);
-      }
-      if (struct.isSetPhone()) {
-        optionals.set(5);
-      }
-      if (struct.isSetAvatar()) {
-        optionals.set(6);
-      }
-      if (struct.isSetPassword()) {
-        optionals.set(7);
-      }
-      if (struct.isSetPasstoken()) {
-        optionals.set(8);
-      }
-      oprot.writeBitSet(optionals, 9);
-      if (struct.isSetId()) {
-        oprot.writeI64(struct.id);
-      }
-      if (struct.isSetAccount()) {
-        oprot.writeString(struct.account);
-      }
-      if (struct.isSetName()) {
-        oprot.writeString(struct.name);
-      }
-      if (struct.isSetGender()) {
-        oprot.writeI32(struct.gender.getValue());
-      }
-      if (struct.isSetEmail()) {
-        oprot.writeString(struct.email);
-      }
-      if (struct.isSetPhone()) {
-        oprot.writeString(struct.phone);
+      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetDesc()) {
+        oprot.writeString(struct.desc);
       }
       if (struct.isSetAvatar()) {
         oprot.writeString(struct.avatar);
-      }
-      if (struct.isSetPassword()) {
-        oprot.writeString(struct.password);
-      }
-      if (struct.isSetPasstoken()) {
-        oprot.writeString(struct.passtoken);
       }
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, User struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(9);
+      struct.id = iprot.readI64();
+      struct.setIdIsSet(true);
+      struct.account = iprot.readString();
+      struct.setAccountIsSet(true);
+      struct.name = iprot.readString();
+      struct.setNameIsSet(true);
+      struct.gender = Gender.findByValue(iprot.readI32());
+      struct.setGenderIsSet(true);
+      struct.email = iprot.readString();
+      struct.setEmailIsSet(true);
+      struct.phone = iprot.readString();
+      struct.setPhoneIsSet(true);
+      struct.password = iprot.readString();
+      struct.setPasswordIsSet(true);
+      struct.passtoken = iprot.readString();
+      struct.setPasstokenIsSet(true);
+      BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
-        struct.id = iprot.readI64();
-        struct.setIdIsSet(true);
+        struct.desc = iprot.readString();
+        struct.setDescIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.account = iprot.readString();
-        struct.setAccountIsSet(true);
-      }
-      if (incoming.get(2)) {
-        struct.name = iprot.readString();
-        struct.setNameIsSet(true);
-      }
-      if (incoming.get(3)) {
-        struct.gender = Gender.findByValue(iprot.readI32());
-        struct.setGenderIsSet(true);
-      }
-      if (incoming.get(4)) {
-        struct.email = iprot.readString();
-        struct.setEmailIsSet(true);
-      }
-      if (incoming.get(5)) {
-        struct.phone = iprot.readString();
-        struct.setPhoneIsSet(true);
-      }
-      if (incoming.get(6)) {
         struct.avatar = iprot.readString();
         struct.setAvatarIsSet(true);
-      }
-      if (incoming.get(7)) {
-        struct.password = iprot.readString();
-        struct.setPasswordIsSet(true);
-      }
-      if (incoming.get(8)) {
-        struct.passtoken = iprot.readString();
-        struct.setPasstokenIsSet(true);
       }
     }
   }
