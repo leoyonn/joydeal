@@ -13,7 +13,8 @@ import org.apache.thrift.TEnum;
 
 public enum Gender implements org.apache.thrift.TEnum {
   Men(0),
-  Women(1);
+  Women(1),
+  Unknown(2);
 
   private final int value;
 
@@ -38,6 +39,8 @@ public enum Gender implements org.apache.thrift.TEnum {
         return Men;
       case 1:
         return Women;
+      case 2:
+        return Unknown;
       default:
         return null;
     }

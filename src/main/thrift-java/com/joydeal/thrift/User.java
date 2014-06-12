@@ -60,7 +60,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
    * 
    * @see Gender
    */
-  public Gender gender; // required
+  public Gender gender; // optional
   public String email; // required
   public String phone; // required
   public String avatar; // optional
@@ -159,7 +159,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   // isset id assignments
   private static final int __ID_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
-  private _Fields optionals[] = {_Fields.DESC,_Fields.AVATAR};
+  private _Fields optionals[] = {_Fields.DESC,_Fields.GENDER,_Fields.AVATAR};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -171,7 +171,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.DESC, new org.apache.thrift.meta_data.FieldMetaData("desc", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.GENDER, new org.apache.thrift.meta_data.FieldMetaData("gender", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+    tmpMap.put(_Fields.GENDER, new org.apache.thrift.meta_data.FieldMetaData("gender", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, Gender.class)));
     tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -194,7 +194,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     long id,
     String account,
     String name,
-    Gender gender,
     String email,
     String phone,
     String password,
@@ -205,7 +204,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     setIdIsSet(true);
     this.account = account;
     this.name = name;
-    this.gender = gender;
     this.email = email;
     this.phone = phone;
     this.password = password;
@@ -933,14 +931,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       }
       first = false;
     }
-    if (!first) sb.append(", ");
-    sb.append("gender:");
-    if (this.gender == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.gender);
+    if (isSetGender()) {
+      if (!first) sb.append(", ");
+      sb.append("gender:");
+      if (this.gender == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.gender);
+      }
+      first = false;
     }
-    first = false;
     if (!first) sb.append(", ");
     sb.append("email:");
     if (this.email == null) {
@@ -995,9 +995,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
     if (name == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'name' was not present! Struct: " + toString());
-    }
-    if (gender == null) {
-      throw new org.apache.thrift.protocol.TProtocolException("Required field 'gender' was not present! Struct: " + toString());
     }
     if (email == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'email' was not present! Struct: " + toString());
@@ -1169,9 +1166,11 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         }
       }
       if (struct.gender != null) {
-        oprot.writeFieldBegin(GENDER_FIELD_DESC);
-        oprot.writeI32(struct.gender.getValue());
-        oprot.writeFieldEnd();
+        if (struct.isSetGender()) {
+          oprot.writeFieldBegin(GENDER_FIELD_DESC);
+          oprot.writeI32(struct.gender.getValue());
+          oprot.writeFieldEnd();
+        }
       }
       if (struct.email != null) {
         oprot.writeFieldBegin(EMAIL_FIELD_DESC);
@@ -1220,7 +1219,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       oprot.writeI64(struct.id);
       oprot.writeString(struct.account);
       oprot.writeString(struct.name);
-      oprot.writeI32(struct.gender.getValue());
       oprot.writeString(struct.email);
       oprot.writeString(struct.phone);
       oprot.writeString(struct.password);
@@ -1229,12 +1227,18 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       if (struct.isSetDesc()) {
         optionals.set(0);
       }
-      if (struct.isSetAvatar()) {
+      if (struct.isSetGender()) {
         optionals.set(1);
       }
-      oprot.writeBitSet(optionals, 2);
+      if (struct.isSetAvatar()) {
+        optionals.set(2);
+      }
+      oprot.writeBitSet(optionals, 3);
       if (struct.isSetDesc()) {
         oprot.writeString(struct.desc);
+      }
+      if (struct.isSetGender()) {
+        oprot.writeI32(struct.gender.getValue());
       }
       if (struct.isSetAvatar()) {
         oprot.writeString(struct.avatar);
@@ -1250,8 +1254,6 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       struct.setAccountIsSet(true);
       struct.name = iprot.readString();
       struct.setNameIsSet(true);
-      struct.gender = Gender.findByValue(iprot.readI32());
-      struct.setGenderIsSet(true);
       struct.email = iprot.readString();
       struct.setEmailIsSet(true);
       struct.phone = iprot.readString();
@@ -1260,12 +1262,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       struct.setPasswordIsSet(true);
       struct.passtoken = iprot.readString();
       struct.setPasstokenIsSet(true);
-      BitSet incoming = iprot.readBitSet(2);
+      BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
         struct.desc = iprot.readString();
         struct.setDescIsSet(true);
       }
       if (incoming.get(1)) {
+        struct.gender = Gender.findByValue(iprot.readI32());
+        struct.setGenderIsSet(true);
+      }
+      if (incoming.get(2)) {
         struct.avatar = iprot.readString();
         struct.setAvatarIsSet(true);
       }

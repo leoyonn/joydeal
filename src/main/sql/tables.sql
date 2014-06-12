@@ -21,7 +21,7 @@ CREATE TABLE `user` (
   `phone` varchar(32) NOT NULL,
   `avatar` varchar(64) NULL,
   `password` varchar(32) NOT NULL,
-  `passtoken` varchar(128) NOT NULL,
+  `passtoken` varchar(128),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class BaseService {
 
-    protected static <T> OperResult<T> r(ErrorCode e, String reason, Throwable ex) {
+    protected static <T> OperResult<T> fail(ErrorCode e, String reason, Throwable ex) {
         String msg = ex.getMessage();
         if (ex.getCause() != null && ex.getCause().toString().contains("SQLIntegrityConstraintViolationException")) {
             msg = "违反唯一约束条件";
@@ -24,19 +24,19 @@ public class BaseService {
         return new OperResult<T>(e, reason + msg);
     }
 
-    protected static <T> OperResult<T> r(ErrorCode e, String reason) {
+    protected static <T> OperResult<T> fail(ErrorCode e, String reason) {
         return new OperResult<T>(e, reason);
     }
 
-    protected static <T> OperResult<T> r(T data) {
+    protected static <T> OperResult<T> success(T data) {
         return new OperResult<T>(data);
     }
 
-    protected static <T> OperResult<List<T>> r(List<T> data) {
+    protected static <T> OperResult<List<T>> success(List<T> data) {
         return new OperResult<List<T>>(data, data.size());
     }
 
-    protected static <T> OperResult<List<T>> r(List<T> data, int total) {
+    protected static <T> OperResult<List<T>> success(List<T> data, int total) {
         return new OperResult<List<T>>(data, total);
     }
 

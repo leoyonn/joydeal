@@ -81,15 +81,11 @@ public abstract class BaseController {
         return new ApiResult(error).toJsonApiResult();
     }
 
-    protected String getUserIdFromCookie(Invocation inv) {
+    protected long getUserIdFromCookie(Invocation inv) {
         return CookieUtils.getUserId(inv);
     }
 
-    protected String getCorpIdFromCookie(Invocation inv) {
-        return CookieUtils.getCorpId(inv);
-    }
-
-    protected String getDeptIdFromCookie(Invocation inv) {
-        return CookieUtils.getDeptId(inv);
+    protected String getPasstoken(Invocation inv) {
+        return CookieUtils.getCookie(inv, "passtoken");
     }
 }

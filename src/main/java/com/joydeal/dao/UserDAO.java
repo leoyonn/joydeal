@@ -6,15 +6,16 @@
  */
 package com.joydeal.dao;
 
-import com.joydeal.result.Auth;
+import com.joydeal.thrift.User;
 import net.paoding.rose.jade.annotation.DAO;
+import net.paoding.rose.jade.annotation.RowHandler;
 import net.paoding.rose.jade.annotation.SQL;
 import net.paoding.rose.jade.annotation.SQLParam;
 import org.springframework.dao.DataAccessException;
-import com.joydeal.thrift.User;
 
 import java.sql.SQLException;
 import java.util.List;
+
 
 /**
  * @author leo
@@ -22,43 +23,17 @@ import java.util.List;
 @DAO
 public interface UserDAO {
     String TableName = "user";
-    String KEYS = "id,account,name,desc,gender,email,phone,avatar,password,passtoken";
-    String VALUES = ":id,:account,:name,:desc,:gender,:email,:phone,:avatar,:password,:passtoken";
-    String VALUES_OBJ = ":u.id,:u.account,:u.name,:u.desc,:u.gender.ordinal()," +
+    String KEYS = "`account`,`name`,`desc`,`gender`,`email`,`phone`,`avatar`,`password`,`passtoken`";
+    String VALUES_OBJ = ":u.account,:u.name,:u.desc,:u.gender.value," +
             ":u.email,:u.phone,:u.avatar,:u.password,:u.passtoken";
     String KVS = "account=:account,name=:name,desc=:desc,gender=:gender," +
             "email=:email,phone=:phone,avatar=:avatar,password=:password,passtoken=:passtoken";
 
-    String KVS_OBJ = "id=:u.id,account=:u.account,name=:u.name,desc=:u.desc,gender=:u.gender," +
+    String KVS_OBJ = "account=:u.account,name=:u.name,desc=:u.desc,gender=:u.gender," +
             "email=:u.email,phone=:u.phone,avatar=:u.avatar,password=:u.password,passtoken=:u.passtoken";
-
-
-    @SQL("INSERT INTO " + TableName + "(" + KEYS + ") VALUES (" + VALUES + ")")
-    public boolean add(@SQLParam("id") String userId,
-                       @SQLParam("account") String account,
-                       @SQLParam("name") String name,
-                       @SQLParam("desc") String desc,
-                       @SQLParam("gender") byte gender,
-                       @SQLParam("email") String email,
-                       @SQLParam("phone") String phone,
-                       @SQLParam("avatar") String avatar,
-                       @SQLParam("password") String password,
-                       @SQLParam("passtoken") String passtoken) throws SQLException, DataAccessException;
 
     @SQL("INSERT INTO " + TableName + "(" + KEYS + ") VALUES (" + VALUES_OBJ + ")")
     public boolean add(@SQLParam("u") User user) throws SQLException, DataAccessException;
-
-    @SQL("UPDATE " + TableName + " SET " + KVS + " WHERE id=:id")
-    public boolean update(@SQLParam("id") String userId,
-                          @SQLParam("account") String account,
-                          @SQLParam("name") String name,
-                          @SQLParam("desc") String desc,
-                          @SQLParam("gender") byte gender,
-                          @SQLParam("email") String email,
-                          @SQLParam("phone") String phone,
-                          @SQLParam("avatar") String avatar,
-                          @SQLParam("password") String password,
-                          @SQLParam("passtoken") String passtoken) throws SQLException, DataAccessException;
 
     @SQL("UPDATE " + TableName + " SET " + KVS_OBJ + " WHERE id=:u.id")
     public boolean update(@SQLParam("u") User user) throws SQLException, DataAccessException;
@@ -70,6 +45,31 @@ public interface UserDAO {
     @SQL("UPDATE " + TableName + " SET " + "password=:newpass" + " WHERE account=:account AND password=:oldpass")
     public boolean updatePasswordByAccount(@SQLParam("account") String account,
                                            @SQLParam("oldpass") String oldpass, @SQLParam("newpass") String newpass) throws SQLException, DataAccessException;
+
+    @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
+    @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE account = :account")
+    public User get(@SQLParam("account") String account) throws SQLException, DataAccessException;
+
+    @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
+    @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " ORDER BY id")
+    public List<User> all() throws SQLException, DataAccessException;
+
+    @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
+    @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE id = :id")
+    public User get(@SQLParam("id") long id) throws SQLException, DataAccessException;
+
+    @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
+    @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE id = :id AND password = :password")
+    public User auth(@SQLParam("id") long id, @SQLParam("password") String password) throws SQLException, DataAccessException;
+
+    @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
+    @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE account = :account AND password = :password")
+    public User auth(@SQLParam("account") String account, @SQLParam("password") String password) throws SQLException, DataAccessException;
+
+    @SQL("DELETE FROM " + TableName)
+    public int clear() throws SQLException, DataAccessException;
+
+
 
 //    /**
 //     * 获取用户密码

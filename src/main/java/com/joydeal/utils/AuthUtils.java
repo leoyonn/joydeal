@@ -7,8 +7,8 @@
 package com.joydeal.utils;
 
 import com.joydeal.base.Constants;
-import com.joydeal.result.Auth;
 import com.joydeal.security.Encrypter;
+import com.joydeal.thrift.User;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.DecoderException;
@@ -37,23 +37,23 @@ public class AuthUtils {
     }
 
     /**
-     * @param pass
-     * @param sessionCode
+     * @param user
      * @param userIp
      * @return
      * @throws SecurityException
      */
-    public static Auth genPassToken(Auth auth, String userIp) throws SecurityException {
+    public static User genPasstoken(User user, String userIp) throws SecurityException {
         String sessionCode = AuthUtils.generateRandomAESKey();
         JSONObject json = new JSONObject();
-        json.put("p", sha1HMAC(auth.password));
+        json.put("p", user.password);
         json.put("ip", userIp);
-        json.put("u", auth.id);
+        json.put("i", user.id);
+        json.put("a", user.account);
         json.put("s", sessionCode);
         json.put("t", System.currentTimeMillis() + "");
         json.put("v", "1.0");
         String token = Encrypter.encryptAES(json.toString());
-        return auth.setPassToken(token);
+        return user.setPasstoken(token);
     }
 
     /**
@@ -61,66 +61,18 @@ public class AuthUtils {
      * @return
      * @throws SecurityException
      */
-    public static JSONObject checkPassToken(String token) throws SecurityException {
-        return decryptPassToken(token);
-    }
-
-    /**
-     * @param token
-     * @return
-     * @throws SecurityException
-     */
-    public static JSONObject decryptPassToken(String token) throws SecurityException {
+    public static User decryptPasstoken(String token) {
         if (StringUtils.isBlank(token)) {
-            throw new SecurityException("no pass token");
-        }
-        try {
-            return JSONObject.fromObject(Encrypter.decryptAES(token));
-        } catch (JSONException je) {
-            throw new SecurityException("invalid pass token");
-        }
-    }
-
-    /**
-     * @param token
-     * @return
-     * @throws SecurityException
-     */
-    public static String getUserIdFromPassToken(JSONObject token) throws SecurityException {
-        try {
-            String userId = token.getString("u");
-            if (StringUtils.isEmpty(userId)) {
-                throw new SecurityException("invalid pass token: no user id found.");
-            }
-            return userId;
-        } catch (JSONException e) {
-            throw new SecurityException(e);
-        }
-    }
-
-    /**
-     * validate user's id and password from token.
-     *
-     * @param passToken
-     * @param userId
-     * @param pass
-     * @return
-     * @throws SecurityException
-     */
-    public static JSONObject validateToken(String passToken, String userId, Auth auth) throws SecurityException {
-        // if (pass == null || StringUtils.isEmpty(pass.password)) {
-        // return null;
-        // }
-        String decryptedData = Encrypter.decryptAES(passToken);
-        JSONObject json = JSONObject.fromObject(decryptedData);
-        if (!userId.equals(json.getString("u"))) {
             return null;
         }
-        // String pwdSign = json.getString("p");
-        // if (!sha1HMAC(pass.password).equals(pwdSign)) {
-        // return null;
-        // }
-        return json;
+        JSONObject j = null;
+        try {
+            j = JSONObject.fromObject(Encrypter.decryptAES(token));
+            return new User().setPasstoken(token).setId(j.getLong("u")).setAccount(j.getString("a"))
+                    .setPassword(j.getString("p"));
+        } catch (JSONException je) {
+            return null;
+        }
     }
 
     /**

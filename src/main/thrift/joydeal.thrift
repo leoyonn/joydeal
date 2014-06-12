@@ -8,7 +8,7 @@
 namespace java com.joydeal.thrift
 
 enum Gender {
-    Men, Women;
+    Men, Women, Unknown;
 }
 
 enum Status {
@@ -20,7 +20,7 @@ struct User {
     2: required string account;
     3: required string name;
     4: optional string desc;
-    5: required Gender gender;
+    5: optional Gender gender;
     6: required string email;
     7: required string phone;
     8: optional string avatar;
