@@ -6,7 +6,7 @@
         <h2>信息修改</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="user/info" method="post" enctype="MULTIPART/FORM-DATA" name="contact_form">
+    <form class="contact_form" action="u/info" method="post" enctype="MULTIPART/FORM-DATA" name="contact_form">
         <ul>
             <li>
                 <label for="name">账号</label>

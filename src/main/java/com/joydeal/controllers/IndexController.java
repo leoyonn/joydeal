@@ -74,7 +74,7 @@ public class IndexController extends BaseController {
         }
         setAuthCookie(inv, result.result);
         inv.addModel("user", result.result);
-        return "/u";
+        return "user_info";
     }
 
     @Get("login")
@@ -89,7 +89,8 @@ public class IndexController extends BaseController {
             return apiResult(loginUser);
         }
         setAuthCookie(inv, loginUser.result);
-        return apiResult(loginUser);
+        inv.addModel("user", loginUser.result);
+        return "user_info";
     }
 
     @Get("lost")
@@ -108,7 +109,7 @@ public class IndexController extends BaseController {
     public String logout(Invocation inv) {
         LOGGER.error("logout: {}", inv);
         CookieUtils.clearCookies(inv);
-        return successResult("退出登录成功");
+        return "/u"; // TODO return "/"
     }
 
     /**
@@ -129,6 +130,7 @@ public class IndexController extends BaseController {
     }
 
     private boolean setAuthCookie(Invocation inv, User user) {
+        AuthUtils.genPasstoken(user, inv.getRequest().getRemoteAddr());
         int expire = Constants.COOKIE_EXPIRE_SECONDS_2WEEK;
         CookieUtils.saveCookie(inv.getResponse(), Constants.COOKIE_KEY_USER_ID, String.valueOf(user.getId()), expire, "/",
                 HttpUtils.getRootDomain(inv.getRequest()));

@@ -13,7 +13,7 @@
 
 <body>
     <div class="headbar"><a href="#">交易地，最省心的个人交易平台</a>
-        <span class="barbtn"><a href="/user/login">登录</a></span>
+        <span class="barbtn"><a href="/login">登录</a></span>
         <span>|</span>
-        <span class="barbtn"><a href="/user/reg">注册</a></span>
+        <span class="barbtn"><a href="/reg">注册</a></span>
     </div>

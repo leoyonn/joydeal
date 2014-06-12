@@ -19,7 +19,7 @@ public interface Constants {
     String DOMAIN = "joydeal.com";
     String COOKIE_KEY_USER_ID = "userId";
     String COOKIE_KEY_EXPIRE_TIME = "expireTime";
-    String COOKIE_KEY_PASSTOKEN = "passToken";
+    String COOKIE_KEY_PASSTOKEN = "passtoken";
     String SECURITY_KEY = "MTIzNDU2Nzg5MDEyMzQ1Ng==";
     String ENCODING = "UTF-8";
 

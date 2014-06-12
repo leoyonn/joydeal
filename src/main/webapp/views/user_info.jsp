@@ -8,22 +8,22 @@
     <h3>我的档案</h3>
     <ul>
         <li>
-            <label for="name">账号</label><span>${account}</span>
+            <label for="name">账号</label><span>${user.account}</span>
         </li>
         <li>
-            <label for="name">头像</label><img src="/avatar/u.1.jpg" alt="介似您的靓照" style="margin-left:60px"></img>
+            <label for="name">头像</label><img src="/avatar/u.${user.id}.jpg" alt="介似您的靓照" style="margin-left:60px"></img>
         </li>
         <li>
-            <label for="name">大名</label><span>${name}</span>
+            <label for="name">大名</label><span>${user.name}</span>
         </li>
         <li>
-            <label for="name">手机号</label><span>${phone}</span>
+            <label for="name">手机号</label><span>${user.phone}</span>
         </li>
         <li>
-            <label for="name">Email</label><span>${email}</span>
+            <label for="name">Email</label><span>${user.email}</span>
         </li>
         <li>
-            <label for="name">性别</label><span>${gender}</span>
+            <label for="name">性别</label><span>${user.gender}</span>
         </li>
     </ul>
     <h3>我的声望</h3>

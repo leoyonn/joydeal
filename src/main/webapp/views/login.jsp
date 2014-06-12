@@ -6,21 +6,21 @@
         <h2>登录</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="/user/login" method="post" name=>
+    <form class="contact_form" action="/login" method="post" name=>
         <ul>
             <li>
                 <label for="name">账号</label>
-                <input type="text"  name="account" id="account" placeholder="try_joydeal007" required />
+                <input type="text"  name="user" id="user" placeholder="输入您的账号或id" required />
             </li>
             <li>
                 <label for="name">密码</label>
-                <input type="text"  name="password" id="password" placeholder="DLdlweruo3#s" required />
+                <input type="text"  name="password" id="password" placeholder="输入您的密码" required />
             </li>
             <li>
                 <button class="btn" type="submit">走起！</button>
-				<a href="/user/lost">忘密码了</a>
+				<a href="/lost">忘密码了</a>
 				<span>|</span>
-				<a href="/user/reg">注册新号</a>
+				<a href="/reg">注册新号</a>
             </li>
         </ul>
     </form>
