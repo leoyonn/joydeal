@@ -2,19 +2,20 @@
 <%@ include file="head.jsp"%>
 
 <div class="container">
+    <div><span class="warn_message">${message}</span></div>
     <div class="title">
         <h2>注册</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="/reg" method="post" name=>
+    <form class="contact_form" action="/reg" method="post">
         <ul>
             <li>
                 <label for="name">账号</label>
-                <input type="text"  name="account" id="account" placeholder="try_joydeal007" required />
+                <input type="text"  name="account" id="account" placeholder="try_joydeal007" value="${account}" required />
             </li>
             <li>
                 <label for="name">密码</label>
-                <input type="text"  name="password" id="password" placeholder="DLdlweruo3#s" required />
+                <input type="text"  name="password" id="password" placeholder="DLdlweruo3#s" value="${password}" required />
             </li>
             <li>
                 <img src="/avatar/u.1.jpg" alt="介似您的靓照" style="margin-left:60px"></img>

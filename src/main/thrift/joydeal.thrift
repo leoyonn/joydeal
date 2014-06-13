@@ -8,7 +8,7 @@
 namespace java com.joydeal.thrift
 
 enum Gender {
-    Men, Women, Unknown;
+    Man, Woman, Unknown;
 }
 
 enum Status {

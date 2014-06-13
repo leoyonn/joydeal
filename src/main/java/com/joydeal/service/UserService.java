@@ -52,6 +52,7 @@ public class UserService extends BaseService {
             if (!userDao.add(user)) {
                 return fail(ErrorCode.DbError, "注册用户失败");
             }
+            user.setId(userDao.lastAddedId());
         } catch (Exception ex) {
             LOGGER.warn("Add user " + user + " got exception", ex);
             return fail(ErrorCode.DbError, "注册用户失败", ex);
@@ -76,7 +77,7 @@ public class UserService extends BaseService {
         try {
             User user = userDao.get(id);
             if (user == null) {
-                return fail(ErrorCode.AuthDenied, "用户名或密码无效");
+                return fail(ErrorCode.InvalidUser, "无此用户");
             }
             return success(user);
         } catch (Exception ex) {
@@ -93,7 +94,7 @@ public class UserService extends BaseService {
         try {
             User user = userDao.get(accountOrId);
             if (user == null) {
-                return fail(ErrorCode.AuthDenied, "获取用户信息失败");
+                return fail(ErrorCode.InvalidUser, "无此用户");
             }
             return success(user);
         } catch (Exception ex) {

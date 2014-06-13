@@ -45,7 +45,7 @@ body {font: 14px/21px "Microsoft YaHei"; }
 .headbar span {
 	color: #FFF;
 	float: right;
-     padding:0 5px 5px;
+    padding:0 5px 5px;
 }
 
 .headbar span  a {
@@ -64,7 +64,8 @@ body {font: 14px/21px "Microsoft YaHei"; }
 	padding:12px; 
 	border-bottom:1px solid #eee;
 	position:relative;
-} 
+}
+
 .container li:last-child {
 	border-bottom:1px solid #777;
 }
@@ -114,6 +115,7 @@ button {
 .container .desc {
 	font-size:6px;
 }
+
 /* form element visual styles */
 .container input, .container textarea, .container select {
     border:1px solid #aaa;
@@ -145,6 +147,12 @@ button {
 	background: #fff url(images/invalid.png) no-repeat 98% center;
 	box-shadow: 0 0 5px #d45252;
 	border-color: #b03535
+}
+
+.container span .warn_message {
+	color:#d45252;
+	margin:10px;
+	font-size: 12px;
 }
 
 /* === Form hints === */

@@ -66,6 +66,9 @@ public interface UserDAO {
     @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE account = :account AND password = :password")
     public User auth(@SQLParam("account") String account, @SQLParam("password") String password) throws SQLException, DataAccessException;
 
+    @SQL("SELECT MAX(LAST_INSERT_ID()) FROM " + TableName)
+    public long lastAddedId() throws SQLException, DataAccessException;
+
     @SQL("DELETE FROM " + TableName)
     public int clear() throws SQLException, DataAccessException;
 

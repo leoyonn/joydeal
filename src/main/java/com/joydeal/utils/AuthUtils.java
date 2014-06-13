@@ -13,6 +13,8 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
@@ -22,6 +24,7 @@ import java.util.Random;
  * @author leo
  */
 public class AuthUtils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthUtils.class);
     private static Random random = new SecureRandom();
 
     /**
@@ -47,8 +50,9 @@ public class AuthUtils {
         JSONObject json = new JSONObject();
         json.put("p", user.password);
         json.put("ip", userIp);
-        json.put("i", user.id);
+        json.put("u", user.id);
         json.put("a", user.account);
+        json.put("n", user.name);
         json.put("s", sessionCode);
         json.put("t", System.currentTimeMillis() + "");
         json.put("v", "1.0");
@@ -69,8 +73,9 @@ public class AuthUtils {
         try {
             j = JSONObject.fromObject(Encrypter.decryptAES(token));
             return new User().setPasstoken(token).setId(j.getLong("u")).setAccount(j.getString("a"))
-                    .setPassword(j.getString("p"));
-        } catch (JSONException je) {
+                    .setPassword(j.getString("p")).setName(j.getString("n"));
+        } catch (JSONException ex) {
+            LOGGER.warn("Passtoken " + token + " decrypt fail", ex);
             return null;
         }
     }

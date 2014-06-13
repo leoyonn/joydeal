@@ -12,8 +12,18 @@
 </head>
 
 <body>
-    <div class="headbar"><a href="#">交易地，最省心的个人交易平台</a>
-        <span class="barbtn"><a href="/login">登录</a></span>
+    <div class="headbar"><a href="/">交易地，最省心的个人交易平台</a>
+        <span class="barbtn">
+        <c:choose>
+           <c:when test="${userInfo != null}"><a href="/logout">退出</a></c:when>
+           <c:otherwise><a href="/reg">注册</a></c:otherwise>
+        </c:choose>
+        </span>
         <span>|</span>
-        <span class="barbtn"><a href="/reg">注册</a></span>
+        <span class="barbtn">
+        <c:choose>
+           <c:when test="${userInfo != null}"><a href="/u">${userInfo.name}</a></c:when>
+           <c:otherwise><a href="/login">登录</a></c:otherwise>
+        </c:choose>
+        </span>
     </div>

@@ -37,12 +37,19 @@ public class UserController extends BaseController {
     private UserService userService;
 
     @Get("")
-    public String info(Invocation inv, @Param("uuid") long userId) {
-        OperResult<User> user = userService.getUser(userId);
-        if (user.getError() != ErrorCode.Success) {
-            return apiResult(user);
+    public String index(Invocation inv) {
+        User user = (User) inv.getModel("userInfo");
+        LOGGER.debug("User in model: {}", user);
+        if (user == null) {
+            long userId = Long.valueOf((String) inv.getModel("uuid"));
+            LOGGER.debug("User index page after login/reg: {}", userId);
+            OperResult<User> userResult = userService.getUser(userId);
+            if (userResult.getError() != ErrorCode.Success) {
+                inv.addModel("message", userResult.error.desc() + ": " + userResult.reason);
+                return "login";
+            }
+            inv.addModel("userInfo", userResult.result);
         }
-        inv.addModel("user", user.result);
         return "user_info";
     }
 

@@ -31,15 +31,17 @@ public class UserDaoTest {
     public void test() throws SQLException {
         dao.clear();
         User user = new User().setAccount("account-001").setName("我是leo").setDesc("joydeal创始人")
-                .setGender(Gender.findByValue(Gender.Men.ordinal()))
+                .setGender(Gender.findByValue(Gender.Man.ordinal()))
                 .setEmail("leo@joydeal.com").setPhone("13811811888")
                 .setAvatar("1").setPassword("pass").setPasstoken("passtoken");
         dao.add(user);
+        System.out.println(dao.lastAddedId());
         user = new User().setAccount("account-002").setName("我是leo").setDesc("joydeal创始人")
-                .setGender(Gender.findByValue(Gender.Men.ordinal()))
+                .setGender(Gender.findByValue(Gender.Man.ordinal()))
                 .setEmail("leo@joydeal.com").setPhone("13811811888")
                 .setAvatar("1").setPassword("pass").setPasstoken("passtoken");
         dao.add(user);
+        System.out.println(dao.lastAddedId());
         System.out.println(dao.all());
         System.out.println(user = dao.get(user.account));
         System.out.println(dao.get(user.id));

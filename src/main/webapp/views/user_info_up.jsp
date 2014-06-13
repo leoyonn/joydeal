@@ -2,6 +2,7 @@
 <%@ include file="head.jsp"%>
 
 <div class="container">
+    <div><span class="warn_message">${message}</span></div>
     <div class="title">
         <h2>信息修改</h2>
         <span class="required_notification">* 表示必填项</span>

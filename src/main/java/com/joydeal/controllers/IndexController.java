@@ -7,6 +7,7 @@
 package com.joydeal.controllers;
 
 import com.joydeal.base.Constants;
+import com.joydeal.controllers.annotations.LoginCheck;
 import com.joydeal.controllers.annotations.LoginRequired;
 import com.joydeal.result.ErrorCode;
 import com.joydeal.result.OperResult;
@@ -28,6 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author leo
  */
+@LoginCheck
 @Path("")
 public class IndexController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
@@ -70,10 +72,11 @@ public class IndexController extends BaseController {
                 .setAvatar(avatar).setPassword(password);
         OperResult<User> result = userService.register(user);
         if (result.error != ErrorCode.Success) {
-            return apiResult(result);
+            inv.addModel("message", result.error.desc() + "：" + result.reason);
+            return "reg";
         }
         setAuthCookie(inv, result.result);
-        inv.addModel("user", result.result);
+        inv.addModel("userInfo", result.result);
         return "user_info";
     }
 
@@ -86,10 +89,11 @@ public class IndexController extends BaseController {
     public String login(Invocation inv, @NotBlank @Param("user") String user, @NotBlank @Param("password") String password) {
         OperResult<User> loginUser = userService.login(user, password, inv.getRequest().getRemoteAddr());
         if (loginUser.error != ErrorCode.Success) {
-            return apiResult(loginUser);
+            inv.addModel("message", loginUser.error.desc() + ": " + loginUser.reason);
+            return "login";
         }
         setAuthCookie(inv, loginUser.result);
-        inv.addModel("user", loginUser.result);
+        inv.addModel("userInfo", loginUser.result);
         return "user_info";
     }
 
@@ -109,7 +113,8 @@ public class IndexController extends BaseController {
     public String logout(Invocation inv) {
         LOGGER.error("logout: {}", inv);
         CookieUtils.clearCookies(inv);
-        return "/u"; // TODO return "/"
+        inv.addModel("message", "登出成功！");
+        return "login"; // TODO return "/"
     }
 
     /**

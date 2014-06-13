@@ -1,5 +1,5 @@
 /**
- * LoginRequiredChecker.java
+ * LoginChecker.java
  * [CopyRight]
  * @author leo leoyonn@gmail.com
  * @date 2013-5-26 下午1:06:44
@@ -12,7 +12,6 @@ import com.joydeal.thrift.User;
 import com.joydeal.utils.AuthUtils;
 import com.joydeal.utils.CookieUtils;
 import com.joydeal.utils.IdUtils;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author leo
  */
-public class LoginRequiredChecker {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginRequiredChecker.class);
+public class LoginChecker {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginChecker.class);
 
     // private UserService userService = new UserService();
 
@@ -34,6 +33,7 @@ public class LoginRequiredChecker {
         public boolean success = false;
         public String ssecurity;
         public String uuid;
+        public User user;
 
         public String toString() {
             return new Gson().toJson(this, getClass());
@@ -43,7 +43,7 @@ public class LoginRequiredChecker {
     /**
      * constructor
      */
-    public LoginRequiredChecker() {
+    public LoginChecker() {
     }
 
     /**
@@ -91,8 +91,9 @@ public class LoginRequiredChecker {
         // got check com.joydeal.result
         result.success = true;
         result.uuid = String.valueOf(userIdFromCookie);
+        result.user = authed;
         // TODO: result.ssecurity = authed.ssecurity;
-        LOGGER.info("check login required success? {}", result.success);
+        LOGGER.info("check login required: {}", result);
         return result;
     }
 }

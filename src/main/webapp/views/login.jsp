@@ -2,15 +2,16 @@
 <%@ include file="head.jsp"%>
 
 <div class="container">
+    <div><span class="warn_message">${message}</span></div>
     <div class="title">
         <h2>登录</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="/login" method="post" name=>
+    <form class="contact_form" action="/login" method="post">
         <ul>
             <li>
                 <label for="name">账号</label>
-                <input type="text"  name="user" id="user" placeholder="输入您的账号或id" required />
+                <input type="text"  name="user" id="user" placeholder="输入您的账号或id" value="${user}" required />
             </li>
             <li>
                 <label for="name">密码</label>

@@ -8,6 +8,7 @@ package com.joydeal.controllers;
 
 import com.joydeal.base.Constants;
 import com.joydeal.controllers.LoginChecker.LoginRequiredCheckResult;
+import com.joydeal.controllers.annotations.LoginCheck;
 import com.joydeal.controllers.annotations.LoginRequired;
 import com.joydeal.result.ErrorCode;
 import net.paoding.rose.web.ControllerInterceptorAdapter;
@@ -20,12 +21,12 @@ import java.lang.annotation.Annotation;
 /**
  * @author leo
  */
-public class LoginRequiredInterceptor extends ControllerInterceptorAdapter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginRequiredInterceptor.class);
+public class LoginCheckInterceptor extends ControllerInterceptorAdapter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginCheckInterceptor.class);
 
     private LoginChecker checker;
 
-    public LoginRequiredInterceptor() {
+    public LoginCheckInterceptor() {
         checker = new LoginChecker();
     }
 
@@ -36,7 +37,7 @@ public class LoginRequiredInterceptor extends ControllerInterceptorAdapter {
 
     @Override
     public Class<? extends Annotation> getRequiredAnnotationClass() {
-        return LoginRequired.class;
+        return LoginCheck.class;
     }
 
     @Override
@@ -46,10 +47,8 @@ public class LoginRequiredInterceptor extends ControllerInterceptorAdapter {
         if (result.success) {
             inv.addModel("uuid", result.uuid);
             inv.addModel("ssecurity", result.ssecurity);
-            return true;
-        } else {
-            inv.addModel("message", ErrorCode.LoginRequired.desc());
-            return "login";
+            inv.addModel("userInfo", result.user);
         }
+        return true;
     }
 }
