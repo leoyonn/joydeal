@@ -12,7 +12,7 @@ enum Gender {
 }
 
 enum Status {
-    Valid, Expired, Close;
+    Valid, Expired, Closed;
 }
 
 struct User {

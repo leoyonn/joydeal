@@ -14,7 +14,7 @@ import org.apache.thrift.TEnum;
 public enum Status implements org.apache.thrift.TEnum {
   Valid(0),
   Expired(1),
-  Close(2);
+  Closed(2);
 
   private final int value;
 
@@ -40,7 +40,7 @@ public enum Status implements org.apache.thrift.TEnum {
       case 1:
         return Expired;
       case 2:
-        return Close;
+        return Closed;
       default:
         return null;
     }
