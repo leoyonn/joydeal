@@ -22,6 +22,7 @@ CREATE TABLE `user` (
   `avatar` varchar(64) NULL,
   `password` varchar(32) NOT NULL,
   `passtoken` varchar(128),
+  `createAt` timestamp,
   PRIMARY KEY (`id`), UNIQUE(`account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
@@ -39,6 +40,7 @@ CREATE TABLE `good` (
   `price` float,
   `status` tinyint,
   `icon` varchar(64),
+  `createAt` timestamp,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -55,6 +57,7 @@ CREATE TABLE `need` (
   `price` float,
   `status` tinyint,
   `icon` varchar(64),
+  `createAt` timestamp,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -68,10 +71,10 @@ CREATE TABLE `zone` (
   `lat` double,
   `landmark` varchar(32),
   `address` varchar(128),
-  `status` tinyint,
   `lord` bigint(20) NOT NULL,
   `creator` bigint(20) NOT NULL,
   `icon` varchar(64),
+  `createAt` timestamp,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

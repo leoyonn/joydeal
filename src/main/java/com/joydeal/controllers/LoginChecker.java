@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * handle login required checking.
+ * Handle login required checking.
  *
  * @author leo
  */
@@ -82,11 +82,11 @@ public class LoginChecker {
                     return result;
                 }
             }
-            // String userIdFromParam = request.getParameter("userId");
-            // if (StringUtils.isBlank(userIdFromParam) ||
-            // !userIdFromParam.equals(userIdFromCookie)) {
-            // return com.joydeal.result;
-            // }
+//            String userIdFromParam = request.getParameter("userId");
+//            if (StringUtils.isBlank(userIdFromParam) ||
+//            !userIdFromParam.equals(userIdFromCookie)) {
+//            return result;
+//            }
         }
         // got check com.joydeal.result
         result.success = true;

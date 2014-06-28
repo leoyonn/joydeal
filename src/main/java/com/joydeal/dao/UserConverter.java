@@ -31,6 +31,8 @@ public class UserConverter implements RowMapper {
                 .setPhone(rs.getString("phone"))
                 .setAvatar(rs.getString("avatar"))
                 .setPassword(rs.getString("password"))
-                .setPasstoken(rs.getString("passtoken"));
+                .setPasstoken(rs.getString("passtoken"))
+                .setCreateAt(rs.getLong("createAt"));
+
     }
 }

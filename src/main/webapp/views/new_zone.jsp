@@ -7,7 +7,7 @@
         <h2>新建宝贝</h2>
         <span class="required_notification">* 表示必填项</span>
     </div>
-    <form class="contact_form" action="/good/new" method="post">
+    <form class="contact_form" action="/zone/new" method="post">
         <ul>
             <li>
             <li>
@@ -19,16 +19,12 @@
                 <input type="text" name="desc" id="desc" placeholder="输入宝贝说明" value="${desc}" required />
             </li>
             <li>
-                <label for="name">属区</label>
-                <input type="text" name="zone" id="zone" placeholder="输入宝贝属区" value="${zone}" required />
+                <label for="name">地标</label>
+                <input type="text" name="landmark" id="landmark" placeholder="输入地标名称" value="${landmark}" required />
             </li>
             <li>
-                <label for="name">有效期</label>
-                <input type="text" name="ttl" id="ttl" placeholder="输入宝贝有效期" value="${ttl}" required />
-            </li>
-            <li>
-                <label for="name">定价</label>
-                <input type="number" name="price" id="price" placeholder="输入价格" value="${price}" required />
+                <label for="name">地址</label>
+                <input type="text" name="address" id="address" placeholder="输入地址" value="${address}" />
             </li>
             <li>
                 <img src="/avatar/u.1.jpg" alt="上传照片" style="margin-left:60px"></img>

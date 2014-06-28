@@ -69,7 +69,7 @@ public class IndexController extends BaseController {
                            @NotBlank @Param("password") String password) {
         User user = new User().setAccount(account).setName(name).setDesc(desc)
                 .setGender(Gender.findByValue(gender)).setEmail(email).setPhone(phone)
-                .setAvatar(avatar).setPassword(password);
+                .setAvatar(avatar).setPassword(password).setCreateAt(System.currentTimeMillis());
         OperResult<User> result = userService.register(user);
         if (result.error != ErrorCode.Success) {
             inv.addModel("message", result.error.desc() + "：" + result.reason);

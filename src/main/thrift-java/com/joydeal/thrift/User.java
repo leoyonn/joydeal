@@ -45,6 +45,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   private static final org.apache.thrift.protocol.TField AVATAR_FIELD_DESC = new org.apache.thrift.protocol.TField("avatar", org.apache.thrift.protocol.TType.STRING, (short)8);
   private static final org.apache.thrift.protocol.TField PASSWORD_FIELD_DESC = new org.apache.thrift.protocol.TField("password", org.apache.thrift.protocol.TType.STRING, (short)9);
   private static final org.apache.thrift.protocol.TField PASSTOKEN_FIELD_DESC = new org.apache.thrift.protocol.TField("passtoken", org.apache.thrift.protocol.TType.STRING, (short)10);
+  private static final org.apache.thrift.protocol.TField CREATE_AT_FIELD_DESC = new org.apache.thrift.protocol.TField("createAt", org.apache.thrift.protocol.TType.I64, (short)11);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -66,6 +67,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
   public String avatar; // optional
   public String password; // required
   public String passtoken; // required
+  public long createAt; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -82,7 +84,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     PHONE((short)7, "phone"),
     AVATAR((short)8, "avatar"),
     PASSWORD((short)9, "password"),
-    PASSTOKEN((short)10, "passtoken");
+    PASSTOKEN((short)10, "passtoken"),
+    CREATE_AT((short)11, "createAt");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -117,6 +120,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
           return PASSWORD;
         case 10: // PASSTOKEN
           return PASSTOKEN;
+        case 11: // CREATE_AT
+          return CREATE_AT;
         default:
           return null;
       }
@@ -158,6 +163,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
 
   // isset id assignments
   private static final int __ID_ISSET_ID = 0;
+  private static final int __CREATEAT_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
   private _Fields optionals[] = {_Fields.DESC,_Fields.GENDER,_Fields.AVATAR};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
@@ -183,6 +189,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.PASSTOKEN, new org.apache.thrift.meta_data.FieldMetaData("passtoken", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.CREATE_AT, new org.apache.thrift.meta_data.FieldMetaData("createAt", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(User.class, metaDataMap);
   }
@@ -197,7 +205,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     String email,
     String phone,
     String password,
-    String passtoken)
+    String passtoken,
+    long createAt)
   {
     this();
     this.id = id;
@@ -208,6 +217,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     this.phone = phone;
     this.password = password;
     this.passtoken = passtoken;
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
   }
 
   /**
@@ -243,6 +254,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     if (other.isSetPasstoken()) {
       this.passtoken = other.passtoken;
     }
+    this.createAt = other.createAt;
   }
 
   public User deepCopy() {
@@ -262,6 +274,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     this.avatar = null;
     this.password = null;
     this.passtoken = null;
+    setCreateAtIsSet(false);
+    this.createAt = 0;
   }
 
   public long getId() {
@@ -511,6 +525,29 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     }
   }
 
+  public long getCreateAt() {
+    return this.createAt;
+  }
+
+  public User setCreateAt(long createAt) {
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
+    return this;
+  }
+
+  public void unsetCreateAt() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  /** Returns true if field createAt is set (has been assigned a value) and false otherwise */
+  public boolean isSetCreateAt() {
+    return EncodingUtils.testBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  public void setCreateAtIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CREATEAT_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case ID:
@@ -593,6 +630,14 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       }
       break;
 
+    case CREATE_AT:
+      if (value == null) {
+        unsetCreateAt();
+      } else {
+        setCreateAt((Long)value);
+      }
+      break;
+
     }
   }
 
@@ -628,6 +673,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     case PASSTOKEN:
       return getPasstoken();
 
+    case CREATE_AT:
+      return Long.valueOf(getCreateAt());
+
     }
     throw new IllegalStateException();
   }
@@ -659,6 +707,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       return isSetPassword();
     case PASSTOKEN:
       return isSetPasstoken();
+    case CREATE_AT:
+      return isSetCreateAt();
     }
     throw new IllegalStateException();
   }
@@ -763,6 +813,15 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       if (!(this_present_passtoken && that_present_passtoken))
         return false;
       if (!this.passtoken.equals(that.passtoken))
+        return false;
+    }
+
+    boolean this_present_createAt = true;
+    boolean that_present_createAt = true;
+    if (this_present_createAt || that_present_createAt) {
+      if (!(this_present_createAt && that_present_createAt))
+        return false;
+      if (this.createAt != that.createAt)
         return false;
     }
 
@@ -882,6 +941,16 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetCreateAt()).compareTo(other.isSetCreateAt());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetCreateAt()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.createAt, other.createAt);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -983,6 +1052,10 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       sb.append(this.passtoken);
     }
     first = false;
+    if (!first) sb.append(", ");
+    sb.append("createAt:");
+    sb.append(this.createAt);
+    first = false;
     sb.append(")");
     return sb.toString();
   }
@@ -1008,6 +1081,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
     if (passtoken == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'passtoken' was not present! Struct: " + toString());
     }
+    // alas, we cannot check 'createAt' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
   }
 
@@ -1127,6 +1201,14 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 11: // CREATE_AT
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.createAt = iprot.readI64();
+              struct.setCreateAtIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -1137,6 +1219,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       // check for required fields of primitive type, which can't be checked in the validate method
       if (!struct.isSetId()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' was not found in serialized data! Struct: " + toString());
+      }
+      if (!struct.isSetCreateAt()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'createAt' was not found in serialized data! Struct: " + toString());
       }
       struct.validate();
     }
@@ -1199,6 +1284,9 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
         oprot.writeString(struct.passtoken);
         oprot.writeFieldEnd();
       }
+      oprot.writeFieldBegin(CREATE_AT_FIELD_DESC);
+      oprot.writeI64(struct.createAt);
+      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1223,6 +1311,7 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       oprot.writeString(struct.phone);
       oprot.writeString(struct.password);
       oprot.writeString(struct.passtoken);
+      oprot.writeI64(struct.createAt);
       BitSet optionals = new BitSet();
       if (struct.isSetDesc()) {
         optionals.set(0);
@@ -1262,6 +1351,8 @@ public class User implements org.apache.thrift.TBase<User, User._Fields>, java.i
       struct.setPasswordIsSet(true);
       struct.passtoken = iprot.readString();
       struct.setPasstokenIsSet(true);
+      struct.createAt = iprot.readI64();
+      struct.setCreateAtIsSet(true);
       BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
         struct.desc = iprot.readString();

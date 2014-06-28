@@ -11,10 +11,7 @@ import com.joydeal.result.ErrorCode;
 import com.joydeal.result.OperResult;
 import com.joydeal.service.CategoryService;
 import com.joydeal.service.GoodService;
-import com.joydeal.thrift.Gender;
-import com.joydeal.thrift.Good;
-import com.joydeal.thrift.Status;
-import com.joydeal.thrift.User;
+import com.joydeal.thrift.*;
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
@@ -36,15 +33,14 @@ public class GoodController extends BaseController {
     @Autowired
     private GoodService goodService;
 
-    @Get("")
-    public String good(Invocation inv) {
-        return "good";
-    }
-
     @Get("{id:[0-9]+}")
-    public String good(Invocation inv, @Param("id") String id) {
-        inv.addModel("name", "测试宝贝");
-        inv.addModel("desc", "测试说明");
+    public String good(Invocation inv, @Param("id") long id) {
+        OperResult<Good> r = goodService.get(id);
+        if (r.getError() != ErrorCode.Success) {
+            inv.addModel("message", r.error.desc() + ": " + r.reason);
+            return "index";
+        }
+        inv.addModel("zone", r.result);
         return "good";
     }
 
@@ -62,9 +58,9 @@ public class GoodController extends BaseController {
                          @NotBlank @Param("price") double price,
                          @NotBlank @Param("ttl") long ttl) {
         User user = (User) inv.getModel("userInfo");
-        Good good = new Good().setCategory(categoryService.category(category)).setDesc(desc)
+        Good good = new Good().setCategory(categoryService.get(category).getResult()).setDesc(desc)
                 .setIcon(icon).setName(name).setPrice(price).setOwner(user).setTtl(ttl)
-                .setStatus(Status.Valid);
+                .setStatus(Status.Valid).setCreateAt(System.currentTimeMillis());
         OperResult<Good> result = goodService.create(good);
         if (result.error != ErrorCode.Success) {
             inv.addModel("message", result.error.desc() + "：" + result.reason);

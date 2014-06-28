@@ -43,6 +43,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
   private static final org.apache.thrift.protocol.TField LORD_FIELD_DESC = new org.apache.thrift.protocol.TField("lord", org.apache.thrift.protocol.TType.STRUCT, (short)6);
   private static final org.apache.thrift.protocol.TField CREATOR_FIELD_DESC = new org.apache.thrift.protocol.TField("creator", org.apache.thrift.protocol.TType.STRUCT, (short)7);
   private static final org.apache.thrift.protocol.TField ICON_FIELD_DESC = new org.apache.thrift.protocol.TField("icon", org.apache.thrift.protocol.TType.STRING, (short)8);
+  private static final org.apache.thrift.protocol.TField CREATE_AT_FIELD_DESC = new org.apache.thrift.protocol.TField("createAt", org.apache.thrift.protocol.TType.I64, (short)9);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -58,6 +59,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
   public User lord; // required
   public User creator; // required
   public String icon; // optional
+  public long createAt; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -68,7 +70,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     POS((short)5, "pos"),
     LORD((short)6, "lord"),
     CREATOR((short)7, "creator"),
-    ICON((short)8, "icon");
+    ICON((short)8, "icon"),
+    CREATE_AT((short)9, "createAt");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -99,6 +102,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
           return CREATOR;
         case 8: // ICON
           return ICON;
+        case 9: // CREATE_AT
+          return CREATE_AT;
         default:
           return null;
       }
@@ -140,6 +145,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
 
   // isset id assignments
   private static final int __ID_ISSET_ID = 0;
+  private static final int __CREATEAT_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
   private _Fields optionals[] = {_Fields.DESC,_Fields.POS,_Fields.ICON};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
@@ -161,6 +167,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, User.class)));
     tmpMap.put(_Fields.ICON, new org.apache.thrift.meta_data.FieldMetaData("icon", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.CREATE_AT, new org.apache.thrift.meta_data.FieldMetaData("createAt", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Zone.class, metaDataMap);
   }
@@ -173,7 +181,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     String name,
     Category category,
     User lord,
-    User creator)
+    User creator,
+    long createAt)
   {
     this();
     this.id = id;
@@ -182,6 +191,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     this.category = category;
     this.lord = lord;
     this.creator = creator;
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
   }
 
   /**
@@ -211,6 +222,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     if (other.isSetIcon()) {
       this.icon = other.icon;
     }
+    this.createAt = other.createAt;
   }
 
   public Zone deepCopy() {
@@ -228,6 +240,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     this.lord = null;
     this.creator = null;
     this.icon = null;
+    setCreateAtIsSet(false);
+    this.createAt = 0;
   }
 
   public long getId() {
@@ -421,6 +435,29 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     }
   }
 
+  public long getCreateAt() {
+    return this.createAt;
+  }
+
+  public Zone setCreateAt(long createAt) {
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
+    return this;
+  }
+
+  public void unsetCreateAt() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  /** Returns true if field createAt is set (has been assigned a value) and false otherwise */
+  public boolean isSetCreateAt() {
+    return EncodingUtils.testBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  public void setCreateAtIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CREATEAT_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case ID:
@@ -487,6 +524,14 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       }
       break;
 
+    case CREATE_AT:
+      if (value == null) {
+        unsetCreateAt();
+      } else {
+        setCreateAt((Long)value);
+      }
+      break;
+
     }
   }
 
@@ -516,6 +561,9 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     case ICON:
       return getIcon();
 
+    case CREATE_AT:
+      return Long.valueOf(getCreateAt());
+
     }
     throw new IllegalStateException();
   }
@@ -543,6 +591,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       return isSetCreator();
     case ICON:
       return isSetIcon();
+    case CREATE_AT:
+      return isSetCreateAt();
     }
     throw new IllegalStateException();
   }
@@ -629,6 +679,15 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       if (!(this_present_icon && that_present_icon))
         return false;
       if (!this.icon.equals(that.icon))
+        return false;
+    }
+
+    boolean this_present_createAt = true;
+    boolean that_present_createAt = true;
+    if (this_present_createAt || that_present_createAt) {
+      if (!(this_present_createAt && that_present_createAt))
+        return false;
+      if (this.createAt != that.createAt)
         return false;
     }
 
@@ -728,6 +787,16 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetCreateAt()).compareTo(other.isSetCreateAt());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetCreateAt()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.createAt, other.createAt);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -813,6 +882,10 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       }
       first = false;
     }
+    if (!first) sb.append(", ");
+    sb.append("createAt:");
+    sb.append(this.createAt);
+    first = false;
     sb.append(")");
     return sb.toString();
   }
@@ -832,6 +905,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
     if (creator == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'creator' was not present! Struct: " + toString());
     }
+    // alas, we cannot check 'createAt' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
     if (category != null) {
       category.validate();
@@ -951,6 +1025,14 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 9: // CREATE_AT
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.createAt = iprot.readI64();
+              struct.setCreateAtIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -961,6 +1043,9 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       // check for required fields of primitive type, which can't be checked in the validate method
       if (!struct.isSetId()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'id' was not found in serialized data! Struct: " + toString());
+      }
+      if (!struct.isSetCreateAt()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'createAt' was not found in serialized data! Struct: " + toString());
       }
       struct.validate();
     }
@@ -1013,6 +1098,9 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
           oprot.writeFieldEnd();
         }
       }
+      oprot.writeFieldBegin(CREATE_AT_FIELD_DESC);
+      oprot.writeI64(struct.createAt);
+      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1035,6 +1123,7 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       struct.category.write(oprot);
       struct.lord.write(oprot);
       struct.creator.write(oprot);
+      oprot.writeI64(struct.createAt);
       BitSet optionals = new BitSet();
       if (struct.isSetDesc()) {
         optionals.set(0);
@@ -1073,6 +1162,8 @@ public class Zone implements org.apache.thrift.TBase<Zone, Zone._Fields>, java.i
       struct.creator = new User();
       struct.creator.read(iprot);
       struct.setCreatorIsSet(true);
+      struct.createAt = iprot.readI64();
+      struct.setCreateAtIsSet(true);
       BitSet incoming = iprot.readBitSet(3);
       if (incoming.get(0)) {
         struct.desc = iprot.readString();

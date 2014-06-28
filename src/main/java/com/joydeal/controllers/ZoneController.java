@@ -37,19 +37,19 @@ public class ZoneController extends BaseController {
     @Autowired
     private ZoneService zoneService;
 
-    @Get("")
-    public String zone(Invocation inv) {
-        return "zone";
-    }
-
     @Get("{id:.*}")
-    public String zone(Invocation inv, @Param("id") String id) {
-        inv.addModel("name", "测试区");
-        inv.addModel("desc", "测试说明");
+    public String zone(Invocation inv, @Param("id") long id) {
+        OperResult<Zone> r = zoneService.get(id);
+        if (r.getError() != ErrorCode.Success) {
+            inv.addModel("message", r.error.desc() + ": " + r.reason);
+            return "index";
+        }
+        inv.addModel("zone", r.result);
         return "zone";
     }
 
     @Get("new")
+    @LoginRequired
     public String create(Invocation inv) {
         return "new_zone";
     }
@@ -65,8 +65,8 @@ public class ZoneController extends BaseController {
                          @NotBlank @Param("lon") double lon,
                          @NotBlank @Param("lat") double lat) {
         User user = (User) inv.getModel("userInfo");
-        Zone zone = new Zone().setCategory(categoryService.category(category)).setDesc(desc)
-                .setIcon(icon).setName(name).setCreator(user).setLord(user)
+        Zone zone = new Zone().setCategory(categoryService.get(category).getResult()).setDesc(desc)
+                .setIcon(icon).setName(name).setCreator(user).setLord(user).setCreateAt(System.currentTimeMillis())
                 .setPos(new Position().setLon(lon).setLat(lat).setAddress(address).setName(landmark));
         OperResult<Zone> result = zoneService.create(zone);
         if (result.error != ErrorCode.Success) {

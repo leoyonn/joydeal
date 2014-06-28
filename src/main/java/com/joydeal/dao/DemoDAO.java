@@ -19,14 +19,14 @@ import java.util.List;
  */
 @DAO
 public interface DemoDAO {
-    String tableName = "demo";
+    String TableName = "demo";
 
-    @SQL("SELECT * FROM " + tableName)
+    @SQL("SELECT * FROM " + TableName)
     List<String> all() throws SQLException, DataAccessException;
 
-    @SQL("INSERT INTO " + tableName + "(v) VALUES (:v)")
+    @SQL("INSERT INTO " + TableName + "(v) VALUES (:v)")
     int add(@SQLParam("v") String v) throws SQLException, DataAccessException;
 
-    @SQL("DELETE FROM " + tableName)
+    @SQL("DELETE FROM " + TableName)
     int clear() throws SQLException, DataAccessException;
 }

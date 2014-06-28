@@ -46,6 +46,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
   private static final org.apache.thrift.protocol.TField PRICE_FIELD_DESC = new org.apache.thrift.protocol.TField("price", org.apache.thrift.protocol.TType.DOUBLE, (short)9);
   private static final org.apache.thrift.protocol.TField STATUS_FIELD_DESC = new org.apache.thrift.protocol.TField("status", org.apache.thrift.protocol.TType.I32, (short)10);
   private static final org.apache.thrift.protocol.TField ICON_FIELD_DESC = new org.apache.thrift.protocol.TField("icon", org.apache.thrift.protocol.TType.STRING, (short)11);
+  private static final org.apache.thrift.protocol.TField CREATE_AT_FIELD_DESC = new org.apache.thrift.protocol.TField("createAt", org.apache.thrift.protocol.TType.I64, (short)12);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -68,6 +69,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
    */
   public Status status; // required
   public String icon; // optional
+  public long createAt; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -85,7 +87,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
      * @see Status
      */
     STATUS((short)10, "status"),
-    ICON((short)11, "icon");
+    ICON((short)11, "icon"),
+    CREATE_AT((short)12, "createAt");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -122,6 +125,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
           return STATUS;
         case 11: // ICON
           return ICON;
+        case 12: // CREATE_AT
+          return CREATE_AT;
         default:
           return null;
       }
@@ -165,6 +170,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
   private static final int __ID_ISSET_ID = 0;
   private static final int __TTL_ISSET_ID = 1;
   private static final int __PRICE_ISSET_ID = 2;
+  private static final int __CREATEAT_ISSET_ID = 3;
   private byte __isset_bitfield = 0;
   private _Fields optionals[] = {_Fields.DESC,_Fields.BUYER,_Fields.TTL,_Fields.ICON};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
@@ -192,6 +198,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, Status.class)));
     tmpMap.put(_Fields.ICON, new org.apache.thrift.meta_data.FieldMetaData("icon", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.CREATE_AT, new org.apache.thrift.meta_data.FieldMetaData("createAt", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Good.class, metaDataMap);
   }
@@ -206,7 +214,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     User owner,
     Zone zone,
     double price,
-    Status status)
+    Status status,
+    long createAt)
   {
     this();
     this.id = id;
@@ -218,6 +227,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     this.price = price;
     setPriceIsSet(true);
     this.status = status;
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
   }
 
   /**
@@ -252,6 +263,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     if (other.isSetIcon()) {
       this.icon = other.icon;
     }
+    this.createAt = other.createAt;
   }
 
   public Good deepCopy() {
@@ -274,6 +286,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     this.price = 0.0;
     this.status = null;
     this.icon = null;
+    setCreateAtIsSet(false);
+    this.createAt = 0;
   }
 
   public long getId() {
@@ -545,6 +559,29 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     }
   }
 
+  public long getCreateAt() {
+    return this.createAt;
+  }
+
+  public Good setCreateAt(long createAt) {
+    this.createAt = createAt;
+    setCreateAtIsSet(true);
+    return this;
+  }
+
+  public void unsetCreateAt() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  /** Returns true if field createAt is set (has been assigned a value) and false otherwise */
+  public boolean isSetCreateAt() {
+    return EncodingUtils.testBit(__isset_bitfield, __CREATEAT_ISSET_ID);
+  }
+
+  public void setCreateAtIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CREATEAT_ISSET_ID, value);
+  }
+
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
     case ID:
@@ -635,6 +672,14 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       }
       break;
 
+    case CREATE_AT:
+      if (value == null) {
+        unsetCreateAt();
+      } else {
+        setCreateAt((Long)value);
+      }
+      break;
+
     }
   }
 
@@ -673,6 +718,9 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     case ICON:
       return getIcon();
 
+    case CREATE_AT:
+      return Long.valueOf(getCreateAt());
+
     }
     throw new IllegalStateException();
   }
@@ -706,6 +754,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       return isSetStatus();
     case ICON:
       return isSetIcon();
+    case CREATE_AT:
+      return isSetCreateAt();
     }
     throw new IllegalStateException();
   }
@@ -819,6 +869,15 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       if (!(this_present_icon && that_present_icon))
         return false;
       if (!this.icon.equals(that.icon))
+        return false;
+    }
+
+    boolean this_present_createAt = true;
+    boolean that_present_createAt = true;
+    if (this_present_createAt || that_present_createAt) {
+      if (!(this_present_createAt && that_present_createAt))
+        return false;
+      if (this.createAt != that.createAt)
         return false;
     }
 
@@ -948,6 +1007,16 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
         return lastComparison;
       }
     }
+    lastComparison = Boolean.valueOf(isSetCreateAt()).compareTo(other.isSetCreateAt());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetCreateAt()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.createAt, other.createAt);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     return 0;
   }
 
@@ -1051,6 +1120,10 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       }
       first = false;
     }
+    if (!first) sb.append(", ");
+    sb.append("createAt:");
+    sb.append(this.createAt);
+    first = false;
     sb.append(")");
     return sb.toString();
   }
@@ -1074,6 +1147,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
     if (status == null) {
       throw new org.apache.thrift.protocol.TProtocolException("Required field 'status' was not present! Struct: " + toString());
     }
+    // alas, we cannot check 'createAt' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
     if (category != null) {
       category.validate();
@@ -1217,6 +1291,14 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
+          case 12: // CREATE_AT
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.createAt = iprot.readI64();
+              struct.setCreateAtIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
           default:
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
         }
@@ -1230,6 +1312,9 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       }
       if (!struct.isSetPrice()) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'price' was not found in serialized data! Struct: " + toString());
+      }
+      if (!struct.isSetCreateAt()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'createAt' was not found in serialized data! Struct: " + toString());
       }
       struct.validate();
     }
@@ -1295,6 +1380,9 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
           oprot.writeFieldEnd();
         }
       }
+      oprot.writeFieldBegin(CREATE_AT_FIELD_DESC);
+      oprot.writeI64(struct.createAt);
+      oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
@@ -1319,6 +1407,7 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       struct.zone.write(oprot);
       oprot.writeDouble(struct.price);
       oprot.writeI32(struct.status.getValue());
+      oprot.writeI64(struct.createAt);
       BitSet optionals = new BitSet();
       if (struct.isSetDesc()) {
         optionals.set(0);
@@ -1367,6 +1456,8 @@ public class Good implements org.apache.thrift.TBase<Good, Good._Fields>, java.i
       struct.setPriceIsSet(true);
       struct.status = Status.findByValue(iprot.readI32());
       struct.setStatusIsSet(true);
+      struct.createAt = iprot.readI64();
+      struct.setCreateAtIsSet(true);
       BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
         struct.desc = iprot.readString();

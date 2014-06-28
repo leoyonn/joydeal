@@ -23,14 +23,11 @@ import java.util.List;
 @DAO
 public interface UserDAO {
     String TableName = "user";
-    String KEYS = "`account`,`name`,`desc`,`gender`,`email`,`phone`,`avatar`,`password`,`passtoken`";
+    String KEYS = "`account`,`name`,`desc`,`gender`,`email`,`phone`,`avatar`,`password`,`passtoken`,`createAt`";
     String VALUES_OBJ = ":u.account,:u.name,:u.desc,:u.gender.value," +
-            ":u.email,:u.phone,:u.avatar,:u.password,:u.passtoken";
-    String KVS = "account=:account,name=:name,desc=:desc,gender=:gender," +
-            "email=:email,phone=:phone,avatar=:avatar,password=:password,passtoken=:passtoken";
-
-    String KVS_OBJ = "account=:u.account,name=:u.name,desc=:u.desc,gender=:u.gender," +
-            "email=:u.email,phone=:u.phone,avatar=:u.avatar,password=:u.password,passtoken=:u.passtoken";
+            ":u.email,:u.phone,:u.avatar,:u.password,:u.passtoken,:u.createAt";
+    String KVS_OBJ = "account=:u.account,name=:u.name,`desc`=:u.desc,gender=:u.gender.value," +
+            "email=:u.email,phone=:u.phone,avatar=:u.avatar,password=:u.password,passtoken=:u.passtoken,createAt=:u.createAt";
 
     @SQL("INSERT INTO " + TableName + "(" + KEYS + ") VALUES (" + VALUES_OBJ + ")")
     public boolean add(@SQLParam("u") User user) throws SQLException, DataAccessException;
@@ -39,12 +36,12 @@ public interface UserDAO {
     public boolean update(@SQLParam("u") User user) throws SQLException, DataAccessException;
 
     @SQL("UPDATE " + TableName + " SET " + "password=:newpass" + " WHERE id=:id AND password=:oldpass")
-    public boolean updatePasswordById(@SQLParam("id") String id, @SQLParam("oldpass") String oldpass,
-                                      @SQLParam("newpass") String newpass) throws SQLException, DataAccessException;
+    public boolean updatePassword(@SQLParam("id") long id, @SQLParam("oldpass") String oldpass,
+                                  @SQLParam("newpass") String newpass) throws SQLException, DataAccessException;
 
     @SQL("UPDATE " + TableName + " SET " + "password=:newpass" + " WHERE account=:account AND password=:oldpass")
-    public boolean updatePasswordByAccount(@SQLParam("account") String account,
-                                           @SQLParam("oldpass") String oldpass, @SQLParam("newpass") String newpass) throws SQLException, DataAccessException;
+    public boolean updatePassword(@SQLParam("account") String account,
+                                  @SQLParam("oldpass") String oldpass, @SQLParam("newpass") String newpass) throws SQLException, DataAccessException;
 
     @RowHandler(rowMapper = UserConverter.class, checkColumns = false)
     @SQL("SELECT `id`," + KEYS + " FROM " + TableName + " WHERE account = :account")

@@ -43,13 +43,18 @@ public class NeedController extends BaseController {
     }
 
     @Get("{id:.*}")
-    public String need(Invocation inv, @Param("id") String id) {
-        inv.addModel("name", "测试需求");
-        inv.addModel("desc", "测试说明");
+    public String need(Invocation inv, @Param("id") long id) {
+        OperResult<Need> r = needService.get(id);
+        if (r.getError() != ErrorCode.Success) {
+            inv.addModel("message", r.error.desc() + ": " + r.reason);
+            return "index";
+        }
+        inv.addModel("need", r.result);
         return "need";
     }
 
     @Get("new")
+    @LoginRequired
     public String create(Invocation inv) {
         return "new_need";
     }
@@ -63,7 +68,7 @@ public class NeedController extends BaseController {
                          @NotBlank @Param("price") double price,
                          @NotBlank @Param("ttl") long ttl) {
         User user = (User) inv.getModel("userInfo");
-        Need need = new Need().setCategory(categoryService.category(category)).setDesc(desc)
+        Need need = new Need().setCategory(categoryService.get(category).getResult()).setDesc(desc)
                 .setIcon(icon).setName(name).setPrice(price).setOwner(user).setTtl(ttl)
                 .setStatus(Status.Valid);
         OperResult<Need> result = needService.create(need);

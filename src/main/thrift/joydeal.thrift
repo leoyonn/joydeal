@@ -26,6 +26,7 @@ struct User {
     8: optional string avatar;
     9: required string password;
     10: required string passtoken;
+    11: required i64 createAt;
 }
 
 struct Category {
@@ -51,6 +52,7 @@ struct Zone {
     6: required User lord;
     7: required User creator;
     8: optional string icon;
+    9: required i64 createAt;
 }
 
 struct Good {
@@ -65,6 +67,7 @@ struct Good {
     9: required double price;
     10: required Status status;
     11: optional string icon;
+    12: required i64 createAt;
 }
 
 struct Need {
@@ -79,5 +82,6 @@ struct Need {
     9: required double price;
     10: required Status status;
     11: optional string icon;
+    12: required i64 createAt;
 }
 

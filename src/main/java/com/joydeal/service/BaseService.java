@@ -8,6 +8,8 @@ package com.joydeal.service;
 
 import com.joydeal.result.ErrorCode;
 import com.joydeal.result.OperResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
  * @author leo
  */
 public class BaseService {
+    protected static final Logger LOGGER = LoggerFactory.getLogger(BaseService.class);
 
     protected static <T> OperResult<T> fail(ErrorCode e, String reason, Throwable ex) {
         String msg = ex.getMessage();

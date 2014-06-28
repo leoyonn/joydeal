@@ -22,13 +22,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService extends BaseService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
+    private static UserService instance;
 
     @Autowired
     private UserDAO userDao;
 
-    public OperResult<User> getUserById(String id) {
-        return null;
+    public UserService() {
+        synchronized (UserService.class) {
+            instance = this;
+        }
+    }
+
+    public static UserService instance() {
+        return instance;
     }
 
     public OperResult<User> login(String accountOrId, String password, String ip) {
@@ -81,7 +87,7 @@ public class UserService extends BaseService {
             }
             return success(user);
         } catch (Exception ex) {
-            LOGGER.warn("Auth user " + id + " got exception", ex);
+            LOGGER.warn("Load user info " + id + " got exception", ex);
             return fail(ErrorCode.DbError, "获取用户信息失败", ex);
         }
     }
